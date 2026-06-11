@@ -8,6 +8,8 @@ import FooterDoor from "./FooterDoor";
 import { useFooterLink } from "@/hooks/useFooterLink";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import Image from "next/image";
+import Layout from "@/components/Layout";
 
 interface NavLink {
     label: string;
@@ -281,14 +283,15 @@ export default function DoorFooter({
                         <Heading className="text-center uppercase text-black!">Ninety</Heading>
                         <Heading className="text-center uppercase text-red-500!">Nine</Heading>
                     </div>
-
-                    <div className="border-zinc-800 px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-2">
-                        <p className="text-zinc-500! text-xs">
+                    <div className="border-zinc-800 max-w-7xl! mx-auto px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-2">
+                        <p className="text-zinc-800! text-xs">
                             © 2026 All Rights Reserved | Pho Ninety Nine Restaurant Pvt. Ltd.
                         </p>
-                        <p className="text-zinc-500! text-xs">
-                            Design and Developed by{' '}
-                            <span className="text-black! font-semibold">webx</span>
+                        <p className="text-zinc-500! text-xs flex items-center justify-center gap-1">
+                            Design and Developed by{" "}
+                            <a href="">
+                                <Image alt="webx" width={50} height={50} src={'/PhooRes/Logo/black-logo-png.webp'} />
+                            </a>
                         </p>
                     </div>
                 </div>

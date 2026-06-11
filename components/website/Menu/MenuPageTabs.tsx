@@ -203,70 +203,57 @@ export const MenuPageTabs = ({ menuPages }: MenuPageTabsProps) => {
 
     return (
         <Layout>
-            <div className="mb-8 rounded-[28px]   bg-white! p-2 ">
-                {/* <div className="grid gap-2 md:grid-cols-3 max-w-[50%] mx-auto">
-                    {[
-                        { value: "food" as MenuTab, icon: Utensils, label: "Pho food", meta: `${foodPages.length} menu pages` },
-                        { value: "drinks" as MenuTab, icon: GlassWater, label: "Drinks", meta: `${DRINKS_PAGES.length} menu pages` },
-                        { value: "order" as MenuTab, icon: ShoppingBag, label: "Foodmandu", meta: "Order delivery", logo: "/PhooRes/Logo/foodmanduLogo.png" },
-                    ].map(tab => {
-                        const Icon = tab.icon;
-                        const isActive = activeTab === tab.value;
-                        return (
-                            <button
-                                key={tab.value}
-                                onClick={() => switchTab(tab.value)}
-                                aria-pressed={isActive}
-                                className={`group flex min-h-10 items-center gap-3 rounded-[22px] border px-2 py-3 text-left transition-all duration-300
-                                    ${isActive
-                                        ? "border-[#ec1c25] bg-[#ec1c25]! text-white! "
-                                        : "border-transparent bg-white! text-[#2f2f31]! hover:border-red-200! hover:bg-gray-100!"
-                                    }`}
-                            >
-                                <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-colors
-                                    ${isActive ? "bg-white/18 text-white!" : "bg-red-200 text-[#8d3324] group-hover:bg-red-300"}`}
-                                >
-                                    {tab.logo ? <Image src={tab.logo} alt="foodmandu" width={100} height={100} className="rounded-full w-full h-full" /> : <Icon className="h-4 w-4" aria-hidden="true" />}
-                                </span>
-                                <span className="min-w-0">
-                                    <span className={`block text-sm font-semibold uppercase tracking-[0.18em] ${isActive ? "text-white!" : "text-[#2f2f31]!"}`}>
-                                        {tab.label}
-                                    </span>
-                                    <span className={`mt-1 block text-xs ${isActive ? "text-white/75!" : "text-[#8a8984]!"}`}>
-                                        {tab.meta}
-                                    </span>
-                                </span>
-                            </button>
-                        );
-                    })}
-                </div> */}
-            </div>
             <div ref={panelRef}>
                 {activeTab !== "order" && (
-                    <section className="relative overflow-hidden rounded-[32px] bg-white! px-4 py-5 sm:px-6 md:px-8 md:py-8">
+                    <section className="relative overflow-hidden rounded-[32px] bg-white! px-4 py-8 sm:px-6 md:px-8 md:py-10">
                         <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white/75 to-transparent" />
 
-                        <div className="relative z-10 mb-5 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-                            <div>
-                                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#ec1c25]!">
-                                    {activeTab === "food" ? "Full food menu" : "Drinks selection"}
-                                </p>
-                                <Heading className="mt-2 text-3xl font-semibold tracking-tight text-[#2f2f31] md:text-4xl!">
-                                    {activeTab === "food" ? "Browse every Pho99 plate" : "Sip through the drinks menu"}
-                                </Heading>
-                            </div>
+                        {/* ── Title (centred) ── */}
+                        <div className="relative z-10 mb-6 flex flex-col items-center text-center gap-2">
+                            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#ec1c25]!">
+                                {activeTab === "food" ? "Full food menu" : "Drinks selection"}
+                            </p>
+                            <Heading className="text-4xl! font-semibold tracking-tight text-[#2f2f31] md:text-4xl!">
+                                {activeTab === "food" ? "Browse every Pho99 plate" : "Sip through the drinks menu"}
+                            </Heading>
                         </div>
 
-                        {/* slide strip */}
+                        {/* ── Tab buttons (Food & Drinks only, no Foodmandu) ── */}
+                        <div className="relative z-10 mb-6 flex justify-center gap-3">
+                            {[
+                                { value: "food" as MenuTab, icon: Utensils, label: "Pho Food" },
+                                { value: "drinks" as MenuTab, icon: GlassWater, label: "Drinks" },
+                            ].map(tab => {
+                                const Icon = tab.icon;
+                                const isActive = activeTab === tab.value;
+                                return (
+                                    <button
+                                        key={tab.value}
+                                        onClick={() => switchTab(tab.value)}
+                                        aria-pressed={isActive}
+                                        className={`flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.14em] transition-all duration-300
+                                            ${isActive
+                                                ? "border-[#ec1c25] bg-[#ec1c25]! text-white!"
+                                                : "border-zinc-300! bg-white! text-[#2f2f31]! hover:border-red-300! hover:bg-red-50!"
+                                            }`}
+                                    >
+                                        <Icon className="h-4 w-4" aria-hidden="true" />
+                                        {tab.label}
+                                    </button>
+                                );
+                            })}
+                        </div>
+
+                        {/* ── Slide strip (reduced height) ── */}
                         <div
                             ref={trackRef}
-                            className="relative z-10 grid grid-cols-1 items-center gap-3 sm:grid-cols-[0.72fr_1fr_0.72fr] md:gap-5"
+                            className="relative z-10 grid grid-cols-1 items-center gap-1 sm:grid-cols-3 md:gap-2"
                             style={{ perspective: "1200px" }}
                         >
                             {pages.length === 1 ? (
-                                /* single drinks image — centred, tall */
                                 <div
-                                    className="group relative aspect-[3/4] cursor-zoom-in overflow-hidden rounded-[26px] bg-white shadow-[0_18px_45px_rgba(28,24,20,0.14)] ring-1 ring-black/8 sm:col-start-2"
+                                    className="group relative cursor-zoom-in overflow-hidden rounded-[26px] bg-white  ring-1 ring-black/8 sm:col-start-2"
+                                    style={{ aspectRatio: "4/5", maxHeight: "55vh" }}
                                     onClick={() => openLightbox(0)}
                                 >
                                     <Image src={pages[0].src} alt={pages[0].alt} fill className="object-contain bg-zinc-50" />
@@ -280,10 +267,11 @@ export const MenuPageTabs = ({ menuPages }: MenuPageTabsProps) => {
                                             key={`${activeTab}-${pageIdx}`}
                                             data-center={isCenter}
                                             data-page-index={pageIdx}
+                                            style={{ aspectRatio: "4/5", maxHeight: "55vh" }}
                                             className={`group relative overflow-hidden rounded-[26px] bg-white ring-1 ring-black/8 transition-all duration-300
                                                 ${isCenter
-                                                    ? "z-10 aspect-[3/4] cursor-zoom-in shadow-[0_28px_70px_rgba(28,24,20,0.22)]"
-                                                    : "hidden aspect-[3/4] cursor-pointer opacity-70 shadow-[0_16px_35px_rgba(28,24,20,0.11)] hover:opacity-90 sm:block sm:scale-95"
+                                                    ? "z-10 cursor-zoom-in shadow-[0_28px_70px_rgba(28,24,20,0.22)]"
+                                                    : "hidden cursor-pointer opacity-70 shadow-[0_16px_35px_rgba(28,24,20,0.11)] hover:opacity-90 sm:block"
                                                 }`}
                                             onClick={handleSlideClick}
                                         >
@@ -294,16 +282,16 @@ export const MenuPageTabs = ({ menuPages }: MenuPageTabsProps) => {
                                                 className="bg-white object-contain"
                                                 sizes="(max-width:640px) 100vw, 33vw"
                                             />
-                                            {isCenter && <HoverOverlay label="View full size" />}
-                                            {/* page badge */}
-                                            <span className="absolute bottom-3 left-3 rounded-full bg-[#2f2f31]/75 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-white! backdrop-blur-sm">
+                                            {/* {isCenter && <HoverOverlay label="View full size" />} */}
+                                            {/* <span className="absolute bottom-3 left-3 rounded-full bg-[#2f2f31]/75 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-white! backdrop-blur-sm">
                                                 {pages[pageIdx].label}
-                                            </span>
+                                            </span> */}
                                         </div>
                                     );
                                 })
                             )}
                         </div>
+
                         {/* prev / next arrows */}
                         {pages.length > 1 && (
                             <>
@@ -325,42 +313,6 @@ export const MenuPageTabs = ({ menuPages }: MenuPageTabsProps) => {
                                 ))}
                             </div>
                         )}
-                        <div className="grid gap-2 md:grid-cols-3 max-w-[50%] mx-auto mt-15">
-                            {[
-                                { value: "food" as MenuTab, icon: Utensils, label: "Pho food", meta: `${foodPages.length} menu pages` },
-                                { value: "drinks" as MenuTab, icon: GlassWater, label: "Drinks", meta: `${DRINKS_PAGES.length} menu pages` },
-                                { value: "order" as MenuTab, icon: ShoppingBag, label: "Foodmandu", meta: "Order delivery", logo: "/PhooRes/Logo/foodmanduLogo.png" },
-                            ].map(tab => {
-                                const Icon = tab.icon;
-                                const isActive = activeTab === tab.value;
-                                return (
-                                    <button
-                                        key={tab.value}
-                                        onClick={() => switchTab(tab.value)}
-                                        aria-pressed={isActive}
-                                        className={`group flex min-h-10 items-center gap-3 rounded-[22px] border px-2 py-3 text-left transition-all duration-300
-                                    ${isActive
-                                                ? "border-[#ec1c25] bg-[#ec1c25]! text-white! "
-                                                : "border-transparent bg-white! text-[#2f2f31]! hover:border-red-200! hover:bg-gray-100!"
-                                            }`}
-                                    >
-                                        <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-colors
-                                    ${isActive ? "bg-white/18 text-white!" : "bg-red-200 text-[#8d3324] group-hover:bg-red-300"}`}
-                                        >
-                                            {tab.logo ? <Image src={tab.logo} alt="foodmandu" width={100} height={100} className="rounded-full w-full h-full" /> : <Icon className="h-4 w-4" aria-hidden="true" />}
-                                        </span>
-                                        <span className="min-w-0">
-                                            <span className={`block text-sm font-semibold uppercase tracking-[0.18em] ${isActive ? "text-white!" : "text-[#2f2f31]!"}`}>
-                                                {tab.label}
-                                            </span>
-                                            <span className={`mt-1 block text-xs ${isActive ? "text-white/75!" : "text-[#8a8984]!"}`}>
-                                                {tab.meta}
-                                            </span>
-                                        </span>
-                                    </button>
-                                );
-                            })}
-                        </div>
                     </section>
                 )}
                 {activeTab === "order" && (

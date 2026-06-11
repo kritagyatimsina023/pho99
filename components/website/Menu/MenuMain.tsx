@@ -21,12 +21,22 @@ const menuPages = Array.from({ length: 10 }, (_, index) => ({
 // ─── at the top of the file, add this data array ───────────────────────────
 
 const MENU_ITEMS = [
-    { name: "Beef Pho", category: "dish" as const, src: "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=800&q=75" },
-    { name: "Spring Rolls", category: "dish" as const, src: "https://images.unsplash.com/photo-1607330289024-1535c6b4e1c1?w=800&q=75" },
-    { name: "Chicken Pho", category: "dish" as const, src: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=75" },
-    { name: "Banh Mi", category: "dish" as const, src: "https://images.unsplash.com/photo-1600628421060-7d0a0a71b9d7?w=800&q=75" },
-    { name: "Veg Noodle Bowl", category: "dish" as const, src: "https://images.unsplash.com/photo-1555126634-323283e090fa?w=800&q=75" },
-    { name: "Pho Special", category: "dish" as const, src: "https://images.unsplash.com/photo-1501959915551-4e8d30928317?w=800&q=75" },
+    { name: "Beef Pho", category: "dish" as const, src: "/PhooRes/Pho99Dish/#26. BUN THIT NUONG.jpg" },
+    { name: "Spring Rolls", category: "dish" as const, src: "/PhooRes/Pho99Dish/Chicken-Spring-Rolls-500x375.jpg" },
+    { name: "Chicken Pho", category: "dish" as const, src: "/PhooRes/Pho99Dish/bún thịt nướng.JPG" },
+    { name: "Banh Mi", category: "dish" as const, src: "/PhooRes/Pho99Dish/Bun-Cha-side-768x576.webp" },
+    { name: "Veg Noodle Bowl", category: "dish" as const, src: "/PhooRes/Pho99Dish/Bun-Cha-V2-768x1024.webp" },
+    { name: "Caramalize Pork", category: "dish" as const, src: "/PhooRes/Pho99Dish/CARAMALIZE PORK.jpg" },
+    { name: "Chicken Chilli", category: "dish" as const, src: "/PhooRes/Pho99Dish/CHICKEN CHILLI.jpg" },
+    { name: "Green Papaya Salad", category: "dish" as const, src: "/PhooRes/Pho99Dish/GREEN PAPAYA SALAD - 1.JPG" },
+    { name: "Grilled Chicken Breast", category: "dish" as const, src: "/PhooRes/Pho99Dish/Grilled Chicken Breast.jpg" },
+    { name: "Grilled Fish", category: "dish" as const, src: "/PhooRes/Pho99Dish/Grilled Fish.JPG" },
+    { name: "Hoi An Chicken", category: "dish" as const, src: "/PhooRes/Pho99Dish/HOI AN CHICKEN (1) (1).jpg" },
+
+
+
+
+
 
     { name: "Lemon Iced Tea", category: "drink" as const, src: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=800&q=75" },
     { name: "Vietnamese Coffee", category: "drink" as const, src: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&q=75" },

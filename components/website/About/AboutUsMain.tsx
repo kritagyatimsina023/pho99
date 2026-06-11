@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image";
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Heading from "../../Heading";
 import Button from "../../Button";
 import { useGSAP } from "@gsap/react";
@@ -96,6 +96,13 @@ const AboutUsMain = () => {
     const awardsRef = useRef<HTMLDivElement | null>(null);
     const awardsHeadingRef = useRef<HTMLHeadingElement | null>(null);
     const awardImageRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+    // Stats refs & counter state
+    const statsRef = useRef<HTMLDivElement | null>(null);
+    const [countersStarted, setCountersStarted] = useState(false);
+    const [heartCount, setHeartCount] = useState(0);
+    const [dishCount, setDishCount] = useState(0);
+    const [yearCount, setYearCount] = useState(0);
 
     useGSAP(() => {
         // ── Hero parallax & fade ──
@@ -325,6 +332,47 @@ const AboutUsMain = () => {
 
     }, []);
 
+    // ── Stats counter: fire once when section enters viewport ──
+    useEffect(() => {
+        const node = statsRef.current;
+        if (!node || countersStarted) return;
+
+        const animateCount = (
+            target: number,
+            duration: number,
+            setter: (v: number) => void
+        ) => {
+            const start = performance.now();
+            // easeOutCubic — fast start, smooth settle
+            const ease = (t: number) => 1 - Math.pow(1 - t, 3);
+
+            const tick = (now: number) => {
+                const elapsed = now - start;
+                const progress = Math.min(elapsed / duration, 1);
+                const value = Math.floor(ease(progress) * target);
+                setter(progress === 1 ? target : value);
+                if (progress < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+        };
+
+        const observer = new IntersectionObserver(
+            ([entry], obs) => {
+                if (entry.isIntersecting) {
+                    setCountersStarted(true);
+                    obs.unobserve(entry.target); // ensure it runs only once
+                    animateCount(100, 2200, setHeartCount);
+                    animateCount(300, 1800, setDishCount);
+                    animateCount(10, 1600, setYearCount);
+                }
+            },
+            { threshold: 0.35 }
+        );
+
+        observer.observe(node);
+        return () => observer.disconnect();
+    }, [countersStarted]);
+
     return (
         <div className="bg-white! relative z-10">
             <PageMainHero heroImg="/PhooRes/Building/buildingInner.jpg" heading="About Pho99" subHeading="A taste of Home,Crafted with Love" />
@@ -351,13 +399,13 @@ const AboutUsMain = () => {
                             ref={(el) => { storyParaRefs.current[1] = el }}
                             className="text-para-secondary text-base leading-relaxed"
                         >
-                            Our recipes are not just dishes — they are stories passed down through generations, carefully preserved and lovingly prepared. From the slow-simmered broths that take hours to perfect, to the fresh herbs and spices that define each plate, every detail reflects our commitment to authenticity.
+                            Our recipes are not just dishes — they are stories passed down through generations, carefully preserved and lovingly prepared. From the slow-simmered broths that take hours to perfect, to the fresh herbs and spices that define each plate, every detail reflects our commitment to authenticity. Essential ingredients — from the rice noodles and aromatic spices to the fish sauce and herbs — are sourced directly from Vietnam to ensure every bowl stays true to its roots.
                         </p>
                         <p
                             ref={(el) => { storyParaRefs.current[2] = el }}
                             className="text-para-secondary text-base leading-relaxed"
                         >
-                            Today, Pho99 stands as a bridge between Vietnamese culinary traditions and Nepal&apos;s vibrant food culture — a place where friends and families gather to share meals, make memories, and experience the warmth of Vietnamese hospitality.
+                            Today, Pho99 stands as a bridge between Vietnamese culinary traditions and Nepal&apos;s vibrant food culture — a place where friends and families gather to share meals, make memories, and experience the warmth of Vietnamese hospitality. With over 70 dishes on the menu, from steaming bowls of phở and crispy bánh mì to vibrant salads and freshly baked baguettes, there is always something to discover.
                         </p>
                     </div>
                     {/* Image side — arch shape */}
@@ -370,23 +418,94 @@ const AboutUsMain = () => {
                                 className="object-cover"
                             />
                         </div>
-                        {/* Decorative accent */}
-                        <div className="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-red-500/20 rounded-full" />
-                        <div className="absolute -top-4 -left-4 w-16 h-16 border-2 border-red-500/10 rounded-full" />
+
+
                     </div>
+                </div>
+            </section>
+            {/* ── Stats / counter section ── */}
+            <section className="relative py-28 px-6 md:px-16 bg-white overflow-hidden">
+                {/* soft red ambient glows */}
+                {/* Heading */}
+                <div className="max-w-3xl mx-auto text-center mb-16 relative">
+                    <span className="inline-block text-xs font-semibold uppercase tracking-[0.25em] text-red-500 mb-4">
+                        Our Journey
+                    </span>
+                    <Heading className="text-5xl! md:text-6xl! leading-[1.05] text-[#1a1a1a]">
+                        A Journey Shared <span className="text-red-500">With Thousands</span>
+                    </Heading>
+                    <p className="text-para-secondary mt-5 max-w-xl mx-auto">
+                        Every bowl served, every guest welcomed, and every year of dedication
+                        reflects our passion for authentic Vietnamese cuisine.
+                    </p>
+                </div>
+
+                {/* Stats grid */}
+                <div
+                    ref={statsRef}
+                    className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0 md:rounded-[2rem] md:border md:border-red-100 md:bg-gradient-to-br md:from-white md:to-red-50/40  md:overflow-hidden"
+                >
+                    {[
+                        {
+                            label: "Hearts Nourished",
+                            value: `${heartCount.toLocaleString()}K+`,
+                            sub: null,
+                        },
+                        {
+                            label: "More than",
+                            value: `${dishCount}+`,
+                            sub: "Vietnamese Dishes",
+                        },
+                        {
+                            label: "Serving Love on a Plate for",
+                            value: `${yearCount}+`,
+                            sub: "Years",
+                        },
+                    ].map((stat, i) => (
+                        <div
+                            key={i}
+                            className="group relative flex flex-col items-center justify-center gap-3 px-8 py-12 bg-white rounded-[2rem] md:rounded-none border border-red-100 md:border-0 md:border-r md:border-red-100 last:md:border-r-0 transition-colors duration-300 hover:bg-red-50/40"
+                        >
+                            {/* top accent line */}
+                            {/* <span className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-[3px] rounded-full bg-red-500/70 group-hover:w-20 transition-all duration-500" /> */}
+
+                            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#a0917e]">
+                                {stat.label}
+                            </span>
+
+                            <p className="text-5xl md:text-6xl font-bold text-red-500 leading-none tabular-nums tracking-tight">
+                                {stat.value}
+                            </p>
+
+                            {stat.sub && (
+                                <span className="text-lg md:text-xl font-semibold text-[#2f2f31] mt-1">
+                                    {stat.sub}
+                                </span>
+                            )}
+                        </div>
+                    ))}
                 </div>
             </section>
             <section className="py-28 px-6 md:px-16 bg-white!">
                 <div ref={ownerRef} className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     {/* Image — rounded leaf shape */}
                     <div ref={ownerImageRef} className="relative order-2 lg:order-1">
-                        <div className="relative w-full max-w-[420px] mx-auto aspect-[3/4] rounded-t-full overflow-hidden shadow-2xl">
+                        <div className="relative w-full max-w-[420px] mx-auto aspect-[3/4] rounded-t-full overflow-hidden ">
                             <Image
                                 src="/PhooRes/People/owner.jpg"
-                                alt="Executive Chef"
+                                alt="Vo Thi Kim Cuong — Founder & CEO"
                                 fill
                                 className="object-cover object-start"
                             />
+                        </div>
+                        {/* Name & position tag */}
+                        <div className="mt-6 text-center">
+                            <p className="text-lg font-semibold text-[#2f2f31] tracking-wide">
+                                Naveen Saru
+                            </p>
+                            <p className="text-xs font-semibold tracking-[0.22em] uppercase text-red-500 mt-1">
+                                Founder
+                            </p>
                         </div>
                     </div>
                     {/* Text */}
@@ -394,17 +513,26 @@ const AboutUsMain = () => {
                         <span className="text-xs font-semibold tracking-[0.25em] uppercase text-red-500">
                             The Founder
                         </span>
+
                         <Heading
                             ref={ownerHeadingRef}
                             className="text-5xl! md:text-6xl! leading-[1.05]"
                         >
-                            A Vision Rooted in Tradition
+                            Bringing Vietnam's Heart to Kathmandu
                         </Heading>
                         <p
                             ref={ownerParaRef}
                             className="text-para-secondary text-base leading-relaxed"
                         >
-                            Driven by a deep love for Vietnamese cuisine and culture, our founder envisioned a space where the rich culinary heritage of Vietnam could find a new home in Nepal. With dedication and an unwavering commitment to quality, Pho99 was established — not just as a restaurant, but as a celebration of flavor, family, and togetherness. Every location carries forward the same founding principles: authentic recipes, the finest ingredients, and hospitality that makes every guest feel at home.
+                            When Naveen Saru first traveled to Vietnam, he was captivated not only by its vibrant culture and breathtaking landscapes but by a simple bowl of pho served from a humble street-side kitchen. The rich broth, fragrant herbs, and generations of tradition behind every bowl revealed a story far deeper than food — a story of family, love, and heritage.
+                        </p>
+
+                        <p className="text-para-secondary text-base leading-relaxed">
+                            During that journey, Naveen met the woman who would later become his wife. Raised in a family that had perfected traditional Vietnamese recipes over generations, she shared with him a passion for cooking that extended beyond ingredients and techniques. For her, food was a way of preserving memories, honoring family traditions, and bringing people together around a shared table.
+                        </p>
+
+                        <p className="text-para-secondary text-base leading-relaxed">
+                            Inspired by their shared vision, the couple brought a piece of Vietnam to Kathmandu and founded Pho99. Today, every dish served reflects that journey — from the slow-simmered broths and carefully selected herbs to the warm hospitality that welcomes every guest. More than a restaurant, Pho99 is a celebration of two cultures united by a love for authentic food, meaningful connections, and unforgettable dining experiences.
                         </p>
                     </div>
                 </div>
@@ -416,22 +544,32 @@ const AboutUsMain = () => {
                         <span className="text-xs font-semibold tracking-[0.25em] uppercase text-red-500">
                             The Kitchen
                         </span>
+
                         <Heading
                             ref={chefHeadingRef}
                             className="text-5xl! md:text-6xl! leading-[1.05]"
                         >
-                            Crafted by Passionate Hands
+                            Preserving Vietnam's Culinary Heritage
                         </Heading>
+
                         <p
                             ref={chefParaRef}
                             className="text-para-secondary text-base leading-relaxed"
                         >
-                            Our executive chef brings years of experience and a profound understanding of Vietnamese culinary traditions to every dish. From the signature pho — with its deeply aromatic, slow-simmered broth — to the vibrant small plates inspired by the streets of Hanoi and Ho Chi Minh City, each creation is a testament to the art of Vietnamese cooking. The kitchen at Pho99 is where tradition meets innovation, and where every meal is prepared with precision, care, and heart.
+                            At Pho99, we are honored to be guided by our Executive Chef, Thi Kim Cuong Vo (Bao), whose expertise and deep-rooted passion for authentic Vietnamese cuisine serve as the heart of our culinary identity. With extensive experience in traditional Vietnamese cooking and modern culinary techniques, Chef Bao brings exceptional skill, creativity, and cultural authenticity to every dish we serve.
+                        </p>
+
+                        <p className="text-para-secondary text-base leading-relaxed">
+                            Dedicated to maintaining the highest standards of quality, consistency, and freshness, Chef Bao carefully oversees every aspect of our menu. From our signature pho with its rich, slow-simmered broth to each appetizer and specialty dish, every recipe is prepared with meticulous attention to detail, ensuring the true flavors of Vietnam are preserved in every bite.
+                        </p>
+
+                        <p className="text-para-secondary text-base leading-relaxed">
+                            Beyond the kitchen, Chef Bao plays a vital leadership role by mentoring and inspiring our culinary teams across all Pho99 locations. Her unwavering commitment to excellence in hygiene, food safety, presentation, and taste has helped establish Pho99 as one of Nepal's most trusted destinations for authentic Vietnamese cuisine. Today, her culinary vision and dedication continue to shape the dining experience at our Lazimpat, Boudhanath, Jhamsikhel, and Thamel branches, bringing the spirit of Vietnam to every guest who walks through our doors.
                         </p>
                     </div>
                     {/* Image — arch shape */}
                     <div ref={chefImageRef} className="relative">
-                        <div className="relative w-full max-w-[420px] mx-auto aspect-[3/4] rounded-t-full overflow-hidden shadow-2xl">
+                        <div className="relative w-full max-w-[420px] mx-auto aspect-[3/4] rounded-t-full overflow-hidden ">
                             <Image
                                 src="/PhooRes/People/Chef-executive.jpeg"
                                 alt="Executive Chef"
@@ -439,64 +577,14 @@ const AboutUsMain = () => {
                                 className="object-cover"
                             />
                         </div>
+                        {/* Name & position tag */}
+                        <div className="mt-6 text-center">
+                            <p className="text-lg font-semibold text-[#2f2f31] tracking-wide">Vo Thi Kim Cuong</p>
+                            <p className="text-xs font-semibold tracking-[0.22em] uppercase text-red-500 mt-1">Executive Chef</p>
+                        </div>
                     </div>
                 </div>
             </section>
-            {/* <section className="py-28 px-6 md:px-16 bg-white!">
-                <div ref={locationsRef} className="max-w-7xl mx-auto">
-                    <div className="text-center mb-16">
-                        <span className="text-xs font-semibold tracking-[0.25em] uppercase text-red-500">
-                            Visit Us
-                        </span>
-                        <Heading
-                            ref={locationsHeadingRef}
-                            className="text-5xl! md:text-6xl! mt-4"
-                        >
-                            Four Locations, One Journey
-                        </Heading>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {locations.map((loc, i) => (
-                            <div
-                                key={loc.name}
-                                ref={(el) => { locationCardRefs.current[i] = el }}
-                                className="group relative overflow-hidden rounded-2xl cursor-pointer"
-                            >
-                                <div className="relative h-[360px] overflow-hidden">
-                                    <Image
-                                        src={loc.src}
-                                        alt={loc.name}
-                                        fill
-                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                                </div>
-                                <div className="absolute bottom-0 left-0 right-0 p-8">
-                                    <Heading className="text-4xl! heading-secondary mb-2">
-                                        {loc.name}
-                                    </Heading>
-                                    <p className="text-white! text-sm leading-relaxed opacity-80 max-w-sm">
-                                        {loc.desc}
-                                    </p>
-                                    <a
-                                        href={`https://maps.google.com/?q=Pho99+${loc.name}+Kathmandu`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 mt-4 text-white! text-xs tracking-[0.2em] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                                    >
-                                        Find Us
-                                        <div className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center">
-                                            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                                                <path d="M3 8h10M9 4l4 4-4 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                            </svg>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section> */}
             <section className="relative overflow-hidden py-28 px-6 md:px-16 bg-white">
                 <div ref={valuesRef} className="relative max-w-6xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1fr] gap-10 lg:gap-16 items-end mb-16">

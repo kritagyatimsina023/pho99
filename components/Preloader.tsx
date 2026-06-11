@@ -6,6 +6,7 @@ import { Volume2, VolumeX } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import Button from './Button';
+import Heading from './Heading';
 
 const Preloader = () => {
   const { hasInteracted, setHasInteracted, play } = useSound();
@@ -90,32 +91,26 @@ const Preloader = () => {
             height={180}
             className="preloader-logo drop-shadow-2xl opacity-0"
           />
-          <h1 className="preloader-title font-serif text-2xl tracking-widest uppercase text-white/80 opacity-0">
+          <Heading className="preloader-title font-loader  text-2xl!   text-black!">
             Vietnam in Every Bite
-          </h1>
+          </Heading>
         </div>
 
         {/* Options */}
-        <div className="flex flex-col sm:flex-row gap-6 w-full">
+        <div className="flex flex-col sm:flex-col gap-2 w-fit mx-auto">
           <Button
             onClick={() => handleChoice(true)}
-            className="preloader-btn-1 flex-1 flex flex-col items-center hover:bg-white! justify-center bg-white! gap-3 py-3 px-4 border border-red-300 hover:scale-108 rounded-2xl transition-all duration-400 group cursor-pointer backdrop-blur-sm opacity-0"
+            className="preloader-btn-2 flex flex-col items-center justify-center gap-3 py-3 px-8 bg-red-400 text-white! hover:bg-red-500 hover:scale-108 rounded-2xl transition-all duration-300 group cursor-pointer backdrop-blur-sm opacity-0"
           >
-            {/* <div className="w-12 h-12 rounded-full bg-red-300 flex items-center justify-center group-hover:scale-110 transition-all duration-300 ease-linear group-hover:bg-red-500  ">
-              <Volume2 className="text-black" />
-            </div> */}
-            <span className="font-medium tracking-wide">Experience with Sound</span>
+            <span className="font-medium tracking-wide text-white!">Experience With Sound</span>
           </Button>
-
           <Button
             onClick={() => handleChoice(false)}
-            className="preloader-btn-2 flex-1 flex flex-col items-center justify-center gap-3 py-3 px-4 bg-red-400 text-white! hover:bg-red-500 hover:scale-108 rounded-2xl transition-all duration-300 group cursor-pointer backdrop-blur-sm opacity-0"
+            className="preloader-btn-1 flex flex-col items-center hover:bg-white! justify-center bg-white! gap-3 py-3 px-8 border border-red-300 hover:scale-108 rounded-2xl transition-all duration-400 group cursor-pointer backdrop-blur-sm opacity-0"
           >
-            {/* <div className="w-12 h-12 rounded-full bg-red-300 flex items-center justify-center group-hover:scale-110 transition-all duration-200 ease-linear  group-hover:bg-red-500 ">
-              <VolumeX className="text-black" />
-            </div> */}
-            <span className="font-medium tracking-wide text-white!">Experience Silent</span>
+            <span className="font-medium tracking-wide">Experience with Silent </span>
           </Button>
+
         </div>
       </div>
     </div>

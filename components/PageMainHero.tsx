@@ -68,7 +68,7 @@ const PageMainHero = ({ heroImg, heading, subHeading }: pageProps) => {
                 {/* <span className="text-xs font-semibold tracking-[0.3em] uppercase text-red-400 mb-4">Our Story</span> */}
                 <Heading
                     ref={heroTitleRef}
-                    className="text-center text-7xl! md:text-8xl! heading-secondary leading-[0.95]"
+                    className="text-center text-white! text-7xl! md:text-8xl! heading-secondary leading-[0.95]"
                 >
                     {heading}
                 </Heading>

@@ -40,14 +40,14 @@ const Hero = () => {
       opacity: 0
     }, "<+=0.01")
       .fromTo(bgImgRef.current, {
-        filter: "blur(12px)"
+        filter: "blur(2px)"
       }, {
         filter: "blur(0px)",
       }, "<+=0.1")
       .fromTo(contentRef1.current,
         { clipPath: "circle(0% at 50% 100%)" },
         { clipPath: "circle(150% at 50% 50%)", ease: "none", duration: 1 },
-        "<+=0.4"
+        "<+=0.1"
       ).fromTo(headingRefTwo.current, {
         opacity: 1
       }, {
@@ -68,7 +68,7 @@ const Hero = () => {
       <div className="absolute z-10 inset-0">
         <Image
           ref={bgImgRef}
-          src={"/PhooRes/Building/heroBuildingOne.jpg"}
+          src={"/PhooRes/Building/whitelazimpat.png"}
           className="w-full h-full object-cover"
           fill
           alt="hero-background"

@@ -10,10 +10,18 @@ const navLinks = [
   { href: '/', label: 'HOME', },
   { href: '/about', label: 'ABOUT' },
   { href: '/menu', label: 'MENU' },
-  { href: '/contact', label: 'CONTACT US' },
   { href: '/news', label: 'NEWS' },
+  { href: '/contact', label: 'CONTACT' },
 
 ];
+
+const locationData = [
+  { id: 1, Location: "Lazimpat", HREF: "https://foodmandu.com/Restaurant/Details/1664" },
+  { id: 2, Location: "Boudha", HREF: "https://foodmandu.com/Restaurant/Details/845" },
+  { id: 3, Location: "JhamshiKhel", HREF: "https://foodmandu.com/Restaurant/Details/324" },
+  { id: 4, Location: "Thamel", HREF: "https://foodmandu.com/" }
+
+]
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -85,10 +93,10 @@ const NavBar = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const className = entry.target.className || '';
-            const isDark = className.includes('bg-black') || 
-                           className.includes('bg-[#0a0a0a]') || 
-                           className.includes('bg-section-bg') ||
-                           entry.target.getAttribute('data-theme') === 'dark';
+            const isDark = className.includes('bg-black') ||
+              className.includes('bg-[#0a0a0a]') ||
+              className.includes('bg-section-bg') ||
+              entry.target.getAttribute('data-theme') === 'dark';
             setIsDarkTheme(isDark);
           }
         });
@@ -126,7 +134,7 @@ const NavBar = () => {
         </div>
         {/* Center: Equalizer Icon */}
         <div className="flex-1 hidden md:flex justify-center pointer-events-auto">
-          <button 
+          <button
             onClick={toggle}
             className="flex items-end gap-[3px] h-5 cursor-pointer group p-2"
             aria-label="Toggle Sound"
@@ -164,7 +172,7 @@ const NavBar = () => {
           </div>
           {/* Equalizer inside overlay */}
           <div className="flex-1 hidden md:flex justify-center">
-            <button 
+            <button
               onClick={toggle}
               className="flex items-end gap-[3px] h-5 cursor-pointer group p-2"
               aria-label="Toggle Sound"
@@ -226,15 +234,16 @@ const NavBar = () => {
             {/* </div> */}
             {/* Location List */}
             <div className="w-full px-3 py-2 flex flex-col gap-3">
-              {['Lazimpat', 'Boudha', 'Jhamsikhel', 'Thamel'].map(location => (
-                <div key={location} className="flex hover:bg-red-700/20 group items-center justify-between overflow-hidden gap-3 p-3 border border-red-400 rounded-xl transition-all cursor-pointer group bg-white/10">
-                  {/* Logo Circle */}
+              {locationData.map(location => (
+                <div key={location.id} className="flex hover:bg-red-700/20 group items-center justify-between overflow-hidden gap-3 p-3 border border-red-400 rounded-xl transition-all cursor-pointer group bg-white/10">
                   <div className='flex items-center gap-1'>
-                    <div className="w-7 h-7 bg-[#fbd405] rounded-full flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                      {/* Stylized Logo Icon similar to the reference */}
-                      <Image alt='food-mandu' width={20} height={20} className='rounded-full' src={"/PhooRes/Logo/foodmandu.png"} />
-                    </div>
-                    <span className="text-base font-serif text-white!">{location}</span>
+                    <Link className='flex items-center gap-3 w-full' href={location.HREF} target='_blank'>
+                      <div className="w-7 h-7 bg-[#fbd405] rounded-full flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                        {/* Stylized Logo Icon similar to the reference */}
+                        <Image alt='food-mandu' width={20} height={20} className='rounded-full' src={"/PhooRes/Logo/foodmandu.png"} />
+                      </div>
+                      <span className="text-base font-serif text-white!">{location.Location}</span>
+                    </Link>
                   </div>
                   {/* Location Text */}
                   {/* <MapPin /> */}

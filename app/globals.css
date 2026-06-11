@@ -64,6 +64,10 @@
   font-family: "newMelfira", serif;
 }
 
+.font-loader {
+  font-family: var(--font-sans);
+}
+
 .transparent-heading {
   color: #4A4D51;
   font-size: 5.75rem;
@@ -137,6 +141,7 @@ button {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -144,9 +149,12 @@ button {
 }
 
 @keyframes equalizer {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scaleY(0.4);
   }
+
   50% {
     transform: scaleY(1);
   }
