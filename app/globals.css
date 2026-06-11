@@ -1,26 +1,133 @@
 @import "tailwindcss";
 
 :root {
+  /* Colors */
   --background: #ffffff;
   --foreground: #171717;
+
+  --about-bg: #f7f2e8;
+  --section-bg: #1e242e;
+  --color-primary: #EC1C25;
+  --text-color: #8a8984;
+  --text-heading-color: #2f2f31;
+  --text-secondary-color: #a9a49d;
+  --color-button: #fdf2e1;
+  --color-heading-transparent: #4A4D51;
+  /* Fonts */
+  --font-heading-arial: Arial, Helvetica, sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-heading: "LTRemark", serif;
+  --font-new-heading: "newMelfira"
 }
 
 @theme inline {
+  /* Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-about-bg: var(--about-bg);
+  --color-section-bg: var(--section-bg);
+  --color-text: var(--text-color);
+  --color-primary: var(--color-primary);
+  --color-text-heading: var(--text-heading-color);
+  --color-secondary: var(--text-secondary-color);
+  --color-button: var(--color-button);
+  --color-transparent-heading: var(--color-heading-transparent);
+  /* Fonts */
+  --font-heading-arial: var(--font-heading-arial);
+  --font-body: var(--font-body);
+  --font-heading: var(--font-heading);
+  --font-new-heading: var(--font-new-heading)
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* @font-face {
+  font-family: 'Roigant';
+  src: url("/fonts/roigant/Roigant.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+} */
+
+/* @font-face {
+  font-family: 'newMid';
+  src: url("/fonts/midnight-cafe-society/MidnightCafeSociety-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+} */
+
+@font-face {
+  font-family: 'newMelfira';
+  src: url("/fonts/melfira/Melfira-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
 }
+
+.font-melfira {
+  font-family: "newMelfira", serif;
+}
+
+.transparent-heading {
+  color: #4A4D51;
+  font-size: 5.75rem;
+}
+
+.white-text {
+  color: white;
+}
+
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  font-weight: 400;
 }
+
+/* Default heading styles */
+h1 {
+  /* font-family: var(--font-heading); */
+  font-family: "newMelfira";
+  font-weight: 400;
+  color: var(--color-text-heading);
+}
+
+h2 {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: var(--color-text);
+}
+
+.text-para-secondary {
+  color: var(--color-secondary);
+}
+
+.heading-secondary {
+  color: var(--color-about-bg);
+}
+
+/* Navs, paragraphs, spans */
+p,
+span,
+a,
+button,
+li,
+input,
+textarea,
+label {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--color-text-heading);
+}
+
+button {
+  cursor: pointer;
+}
+
+/* About section headings */
+.about-heading {
+  font-family: var(--font-about-heading);
+  font-weight: 400;
+}
+
+/* button {
+  background-color: var(--color-button);
+} */
