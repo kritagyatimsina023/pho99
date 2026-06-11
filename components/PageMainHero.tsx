@@ -51,7 +51,7 @@ const PageMainHero = ({ heroImg, heading, subHeading }: pageProps) => {
 
     }, [])
     return (
-        <section ref={heroRef} className="relative h-[85vh] w-full overflow-hidden">
+        <section ref={heroRef} data-theme="dark" className="relative h-[85vh] w-full overflow-hidden">
             <div className="absolute inset-0">
                 <Image
                     ref={heroImageRef}

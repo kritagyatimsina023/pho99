@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Heading from "@/components/Heading";
 import { MenuPageTabs } from "./MenuPageTabs";
 import Layout from "@/components/Layout";
+import PageMainHero from "@/components/PageMainHero";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -242,7 +243,7 @@ const MenuMain = () => {
 
     return (
         <main className="bg-white">
-            <section ref={heroRef} className="relative h-[85vh] w-full overflow-hidden">
+            {/* <section ref={heroRef} className="relative h-[85vh] w-full overflow-hidden">
                 <Image
                     ref={heroImageRef}
                     src="/PhooRes/HeroSlider/PhoFood-1.avif"
@@ -266,7 +267,8 @@ const MenuMain = () => {
                         Open the menu and explore Vietnamese comfort, fresh drinks, and sweet finishes across our Kathmandu locations.
                     </p>
                 </div>
-            </section>
+            </section> */}
+            <PageMainHero heading="Taste The Journey" heroImg="/PhooRes/HeroSlider/PhoFood-1.avif" subHeading="    Open the menu and explore Vietnamese comfort, fresh drinks, and sweet finishes across our Kathmandu locations." />
             {/* <section className="bg-white px-4 py-28 md:px-12">
                 <div className="mx-auto max-w-7xl">
                     <div className="mb-14 max-w-2xl">
@@ -364,7 +366,6 @@ const MenuMain = () => {
                             </div>
                         ))}
                     </div>
-
                 </Layout>
             </section>
         </main>

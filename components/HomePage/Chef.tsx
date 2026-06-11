@@ -145,7 +145,7 @@ const Chef = () => {
     return () => tl.kill()
   }, [])
   return (
-    <div ref={mainRef} className="h-[400vh] overflow-hidden" >
+    <div ref={mainRef} data-theme="dark" className="h-[400vh] overflow-hidden" >
       <section ref={sectionRef} className="h-screen w-full relative z-10 " >
         <div ref={overlayRef} className="absolute bg-black w-full h-full z-10" ></div>
         <div className="h-full overflow-hidden " >

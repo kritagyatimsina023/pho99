@@ -64,7 +64,7 @@ const Hero = () => {
   }, [])
 
   return (
-    <div ref={mainRef} className="min-h-screen w-full relative overflow-hidden">
+    <div ref={mainRef} data-theme="dark" className="min-h-screen w-full relative overflow-hidden">
       <div className="absolute z-10 inset-0">
         <Image
           ref={bgImgRef}

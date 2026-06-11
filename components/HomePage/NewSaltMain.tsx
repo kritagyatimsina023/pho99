@@ -335,6 +335,7 @@ const NewSaltMain = () => {
   return (
     <section
       ref={sectionRef}
+      data-theme="dark"
       className="relative bg-black! min-h-dvh w-full overflow-hidden"
     >
       {/* Salt crystals background */}

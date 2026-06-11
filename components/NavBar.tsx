@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import Heading from './Heading';
 import { usePathname } from 'next/navigation';
+import { useSound } from '@/provider/SoundProvider';
 const navLinks = [
   { href: '/', label: 'HOME', },
   { href: '/about', label: 'ABOUT' },
@@ -19,9 +20,30 @@ const NavBar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isPastHero, setIsPastHero] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(false); // Track section theme
 
+  const { isPlaying, toggle } = useSound();
 
   const pathName = usePathname()
+
+  // Check initial theme on mount/route change (for pages that start with a dark hero)
+  useEffect(() => {
+    setIsDarkTheme(false); // reset first
+    const checkInitialTheme = () => {
+      const darkSection = document.querySelector('[data-theme="dark"]');
+      if (darkSection) {
+        const rect = darkSection.getBoundingClientRect();
+        // Section is at or near the top of the viewport
+        const isAtTop = rect.top <= 10 && rect.bottom > 10;
+        setIsDarkTheme(isAtTop);
+      } else {
+        setIsDarkTheme(false);
+      }
+    };
+    // Small delay to let the page render before measuring
+    const timer = setTimeout(checkInitialTheme, 50);
+    return () => clearTimeout(timer);
+  }, [pathName]);
 
   const handleActive = () => {
     setIsOpen(false)
@@ -56,8 +78,38 @@ const NavBar = () => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+
+    // Intersection Observer to detect section backgrounds
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const className = entry.target.className || '';
+            const isDark = className.includes('bg-black') || 
+                           className.includes('bg-[#0a0a0a]') || 
+                           className.includes('bg-section-bg') ||
+                           entry.target.getAttribute('data-theme') === 'dark';
+            setIsDarkTheme(isDark);
+          }
+        });
+      },
+      {
+        rootMargin: '-20px 0px -90% 0px',
+      }
+    );
+
+    const sections = document.querySelectorAll('section, [data-theme]');
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
+  }, [lastScrollY, pathName]);
+
+  const logoSrc = isDarkTheme ? '/PhooRes/Logo/whiteLogo.svg' : '/PhooRes/Logo/PhooLogo.svg';
+  const iconColor = isDarkTheme ? 'bg-white!' : 'bg-black/80';
+  const burgerColor = isDarkTheme ? 'bg-white!' : 'bg-black!';
 
   return (
     <>
@@ -69,16 +121,20 @@ const NavBar = () => {
         {/* Left Side: Logo */}
         <div className="flex-1 flex items-center pointer-events-auto">
           <Link href="/">
-            <Image width={70} height={70} alt='logo' src={'/PhooRes/Logo/PhooLogo.svg'} />
+            <Image width={70} height={70} alt='logo' src={logoSrc} className="transition-all duration-300" />
           </Link>
         </div>
         {/* Center: Equalizer Icon */}
         <div className="flex-1 hidden md:flex justify-center pointer-events-auto">
-          <div className="flex items-end gap-[3px] h-5">
-            <div className="w-[3px] bg-black/80 h-3"></div>
-            <div className="w-[3px] bg-black/80 h-5"></div>
-            <div className="w-[3px] bg-black/80 h-4"></div>
-          </div>
+          <button 
+            onClick={toggle}
+            className="flex items-end gap-[3px] h-5 cursor-pointer group p-2"
+            aria-label="Toggle Sound"
+          >
+            <div className={`w-[3px] ${iconColor} origin-bottom transition-all duration-300 ${isPlaying ? 'h-5 animate-[equalizer_1s_infinite_0ms]' : 'h-2'}`}></div>
+            <div className={`w-[3px] ${iconColor} origin-bottom transition-all duration-300 ${isPlaying ? 'h-5 animate-[equalizer_1.2s_infinite_200ms]' : 'h-4'}`}></div>
+            <div className={`w-[3px] ${iconColor} origin-bottom transition-all duration-300 ${isPlaying ? 'h-5 animate-[equalizer_0.8s_infinite_400ms]' : 'h-3'}`}></div>
+          </button>
         </div>
         {/* Right Side: Menu Button */}
         <div className="flex-1 flex items-center justify-end gap-4 pointer-events-auto ">
@@ -88,8 +144,8 @@ const NavBar = () => {
           >
             {/* <span className="hidden sm:block text-red-600! font-medium tracking-widest text-sm">MENU</span> */}
             <div className="w-12 h-12 rounded-full  flex flex-col items-center  justify-center gap-[5px]">
-              <span className="w-5 h-[2px] bg-white! block transition-transform group-hover:-translate-y-[1px]"></span>
-              <span className="w-5 h-[2px] bg-white! block transition-transform group-hover:translate-y-[1px]"></span>
+              <span className={`w-5 h-[2px] ${burgerColor} block transition-all duration-300 group-hover:-translate-y-[1px]`}></span>
+              <span className={`w-5 h-[2px] ${burgerColor} block transition-all duration-300 group-hover:translate-y-[1px]`}></span>
             </div>
           </button>
         </div>
@@ -108,11 +164,15 @@ const NavBar = () => {
           </div>
           {/* Equalizer inside overlay */}
           <div className="flex-1 hidden md:flex justify-center">
-            <div className="flex items-end gap-[3px] h-5">
-              <div className="w-[3px] bg-white! h-3"></div>
-              <div className="w-[3px] bg-white! h-5"></div>
-              <div className="w-[3px] bg-white! h-4"></div>
-            </div>
+            <button 
+              onClick={toggle}
+              className="flex items-end gap-[3px] h-5 cursor-pointer group p-2"
+              aria-label="Toggle Sound"
+            >
+              <div className={`w-[3px] bg-white! origin-bottom transition-all duration-300 ${isPlaying ? 'h-5 animate-[equalizer_1s_infinite_0ms]' : 'h-2'}`}></div>
+              <div className={`w-[3px] bg-white! origin-bottom transition-all duration-300 ${isPlaying ? 'h-5 animate-[equalizer_1.2s_infinite_200ms]' : 'h-4'}`}></div>
+              <div className={`w-[3px] bg-white! origin-bottom transition-all duration-300 ${isPlaying ? 'h-5 animate-[equalizer_0.8s_infinite_400ms]' : 'h-3'}`}></div>
+            </button>
           </div>
           {/* Close button */}
           <div className="flex-1 flex items-center  justify-end gap-4">
