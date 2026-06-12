@@ -219,7 +219,7 @@ export default function FooterDoor({
 
                     {/* Decorative divider with arrows */}
                     <div className="flex items-center w-full justify-center mb-4">
-                        <div className="flex-1 flex justify-end">
+                        {/* <div className="flex-1 flex justify-end">
                             <Arrow className="w-15 h-20" />
                         </div>
                         <p className="text-[12px] font-melfira text-[#2c2c2c] font-bold whitespace-nowrap">
@@ -227,7 +227,7 @@ export default function FooterDoor({
                         </p>
                         <div className="flex-1 flex justify-start">
                             <Arrow imgClassName="rotate-180" className="w-15 h-20" />
-                        </div>
+                        </div> */}
                     </div>
                     {/* Begin Journey button */}
                     {links.map((link) => (
@@ -239,6 +239,7 @@ export default function FooterDoor({
                                 e.stopPropagation();
                                 closeDoor();
                             }}
+                            className="mt-15"
                         >
                             <Button className="scale-75 origin-top">
                                 Begin Journey

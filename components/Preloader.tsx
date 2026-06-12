@@ -95,9 +95,8 @@ const Preloader = () => {
             Vietnam in Every Bite
           </Heading>
         </div>
-
         {/* Options */}
-        <div className="flex flex-col sm:flex-col gap-2 w-fit mx-auto">
+        <div className="flex flex-col sm:flex-col gap-3 w-fit mx-auto">
           <Button
             onClick={() => handleChoice(true)}
             className="preloader-btn-2 text-white!"

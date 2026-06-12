@@ -16,6 +16,7 @@ import Heading from "@/components/Heading";
 import Buttons from "@/components/Buttons";
 import Layout from "@/components/Layout";
 import PageMainHero from "@/components/PageMainHero";
+import Button from "@/components/Button";
 
 const contactMethods = [
     {
@@ -216,10 +217,9 @@ const ContactUs = () => {
                                 <p className="max-w-md text-xs leading-5 text-[#8a8984]!">
                                     Our team usually replies within the day. For urgent bookings, please call the nearest branch directly.
                                 </p>
-                                <Buttons type="submit">
+                                <Button type="submit" className="scale-[0.85] origin-center sm:origin-right">
                                     Send Message
-                                    <SendHorizonal className="h-4 w-4" aria-hidden="true" />
-                                </Buttons>
+                                </Button>
                             </div>
                         </form>
                     </div>
@@ -291,13 +291,12 @@ const ContactUs = () => {
                                         rel="noopener noreferrer"
                                         className="mt-5 inline-flex items-center 
                                         gap-2 text-xs font-semibold 
-                                        uppercase
+                                        uppercase 
                                         text-[#ec1c25]!"
                                     >
-                                        <Buttons>
+                                        <Button className="scale-[0.85] origin-left">
                                             View Map
-                                            <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                                        </Buttons>
+                                        </Button>
                                     </Link>
                                 </div>
                             </div>
