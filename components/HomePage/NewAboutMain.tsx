@@ -4,6 +4,7 @@ import React, { useRef, useState, useCallback } from "react";
 import Heading from "../Heading";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap"
+import Buttons from "../Buttons";
 import Button from "../Button";
 
 const NewAboutMain = () => {
@@ -81,9 +82,11 @@ const NewAboutMain = () => {
           <p className="text-center max-w-md text-black! leading-relaxed  text-sm md:text-base">
             Discover the story behind Pho99, where authentic Vietnamese traditions meet exceptional hospitality. Experience the rich flavors, comforting aromas, and warm atmosphere that bring the taste of Vietnam to Nepal.
           </p>
-          <Button className="px-8 py-3 border text-white!  font-semibold transition-colors cursor-pointer">
-            About Us
-          </Button>
+          <Link href={"/about"}>
+            <Button>
+              About Us
+            </Button>
+          </Link>
         </div>
       </div>
       {/* Left Image (Arch shape) */}
@@ -102,22 +105,22 @@ const NewAboutMain = () => {
         style={parallaxStyle(rightPos)}
       >
         <div className="w-full h-full relative rounded-tl-[100px] rounded-br-[100px] overflow-hidden shadow-xl border border-black/5">
-          <Image src="/PhooRes/HeroSlider/Phoofood-2.avif" alt="Main dish" fill className="object-cover" />
+          <Image src="/PhooRes/Pho99Dish/HeroFood.png" alt="Main dish" fill className="object-cover" />
         </div>
       </div>
       {/* Circular Badge right below right image */}
-      <div className="hidden  lg:block absolute right-12 xl:right-32 top-[calc(320px+35vw+20px)]  w-32 h-32 z-20">
+      <div className="hidden   lg:block absolute right-12 xl:right-32 top-[calc(320px+37vw+20px)]  w-32 h-32 z-20">
         <div className="relative w-full  h-full flex items-center justify-center animate-[spin_10s_linear_infinite]">
           <svg viewBox="0 0 100 100" className="w-full h-full fill-none">
             <path id="circlePath" color="#C10008" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
             <text className="text-[10px] fill-[#000000] tracking-[4px] font-bold uppercase">
-              <textPath href="#circlePath" startOffset="0%">BOOK A TABLE • BOOK A TABLE • </textPath>
+              <textPath href="#circlePath" startOffset="0%">ORDER NOW • ORDER NOW • </textPath>
             </text>
           </svg>
         </div>
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-12 h-12  rounded-full flex items-center justify-center shadow-md">
-            <Image alt="foodmandu" className="rounded-full" width={40} height={40} src={'/PhooRes/Logo/foodmanduLogo.png'} />
+            <Image alt="foodmandu" className="rounded-full" width={50} height={50} src={'/PhooRes/Logo/foodmanduLogo.png'} />
           </div>
         </div>
       </div>

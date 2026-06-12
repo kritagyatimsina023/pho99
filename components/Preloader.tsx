@@ -100,15 +100,16 @@ const Preloader = () => {
         <div className="flex flex-col sm:flex-col gap-2 w-fit mx-auto">
           <Button
             onClick={() => handleChoice(true)}
-            className="preloader-btn-2 flex flex-col items-center justify-center gap-3 py-3 px-8 bg-red-400 text-white! hover:bg-red-500 hover:scale-108 rounded-2xl transition-all duration-300 group cursor-pointer backdrop-blur-sm opacity-0"
+            className="preloader-btn-2 text-white!"
           >
             <span className="font-medium tracking-wide text-white!">Experience With Sound</span>
           </Button>
           <Button
+            white={false}
             onClick={() => handleChoice(false)}
-            className="preloader-btn-1 flex flex-col items-center hover:bg-white! justify-center bg-white! gap-3 py-3 px-8 border border-red-300 hover:scale-108 rounded-2xl transition-all duration-400 group cursor-pointer backdrop-blur-sm opacity-0"
+            className="preloader-btn-1 bg-white! text-black! border-1 border-red-400! hover:bg-white! "
           >
-            <span className="font-medium tracking-wide">Experience with Silent </span>
+            <span className="font-medium tracking-wide ">Experience with Silent </span>
           </Button>
 
         </div>

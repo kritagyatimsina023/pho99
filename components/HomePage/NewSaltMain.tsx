@@ -2,12 +2,10 @@
 
 import React, { useRef, useCallback } from "react";
 import Heading from "../Heading";
-// import Button from "../Button";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import Button from "../Button";
 import CrystalLineSVG from "../CrystalLineSVG";
 
 import { useMediaQuery } from "react-responsive";

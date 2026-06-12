@@ -2,9 +2,10 @@
 import Image from "next/image";
 import React, { useRef } from "react";
 import Heading from "../Heading";
-import Button from "../Button";
+import Buttons from "../Buttons";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap"
+import Button from "../Button";
 const saltCrystals = [
   {
     top: "5%",
@@ -265,7 +266,7 @@ const Reservation = () => {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 90% 70% at 50% 50%, rgba(255,255,255,1) 20%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0) 100%)",
+              "radial-gradient(ellipse 90% 70% at 50% 50%, rgba(255,255,255,1) 10%, rgba(255,255,255,0.85) 10%, rgba(255,255,255,0) 100%)",
           }}
         />
       </div>
@@ -309,7 +310,7 @@ const Reservation = () => {
           ))}
         </div> */}
         <div className="mt-8">
-          <Button ref={btnRef} className="hover:bg-red-700!">
+          <Button ref={btnRef}>
             Order Now
           </Button>
         </div>

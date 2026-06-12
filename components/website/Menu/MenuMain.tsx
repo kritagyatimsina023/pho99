@@ -278,7 +278,7 @@ const MenuMain = () => {
                     </p>
                 </div>
             </section> */}
-            <PageMainHero heading="Taste The Journey" heroImg="/PhooRes/HeroSlider/PhoFood-1.avif" subHeading="    Open the menu and explore Vietnamese comfort, fresh drinks, and sweet finishes across our Kathmandu locations." />
+            <PageMainHero heading="Taste The Journey" heroImg="/PhooRes/Pho99Dish/darkGreen.png" subHeading="    Open the menu and explore Vietnamese comfort, fresh drinks, and sweet finishes across our Kathmandu locations." />
             {/* <section className="bg-white px-4 py-28 md:px-12">
                 <div className="mx-auto max-w-7xl">
                     <div className="mb-14 max-w-2xl">

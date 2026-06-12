@@ -13,7 +13,7 @@ import {
     SendHorizonal,
 } from "lucide-react";
 import Heading from "@/components/Heading";
-import Button from "@/components/Button";
+import Buttons from "@/components/Buttons";
 import Layout from "@/components/Layout";
 import PageMainHero from "@/components/PageMainHero";
 
@@ -43,7 +43,7 @@ const locations = [
         name: "Lazimpat",
         address: "Lazimpat, Kathmandu",
         image: "/PhooRes/Building/heroBuildingOne.jpg",
-        mapHref: "https://www.google.com/maps/search/?api=1&query=Pho99%20Lazimpat%20Kathmandu",
+        mapHref: "https://www.google.com/maps?ll=27.725304,85.322856&z=16&t=h&hl=en&gl=NP&mapclient=embed&cid=5968072047316399150",
         note: "Flagship Pho99 location with a warm, neighborhood dining room.",
         number: "+977-981 831 6955"
     },
@@ -51,7 +51,7 @@ const locations = [
         name: "Boudha",
         address: "Boudha, Kathmandu",
         image: "/PhooRes/Building/Bouddha.jpg",
-        mapHref: "https://www.google.com/maps/search/?api=1&query=Pho99%20Boudha%20Kathmandu",
+        mapHref: "https://www.google.com/maps?ll=27.72104,85.361585&z=13&t=h&hl=en&gl=NP&mapclient=embed&cid=17330905215922559191",
         note: "A calm stop for Vietnamese comfort near the Boudhanath area.",
         number: "+977-980 114 3330"
 
@@ -60,7 +60,7 @@ const locations = [
         name: "Jhamsikhel",
         address: "Jhamsikhel, Lalitpur",
         image: "/PhooRes/Building/Jhamsikhel.jpg",
-        mapHref: "https://www.google.com/maps/search/?api=1&query=Pho99%20Jhamsikhel%20Lalitpur",
+        mapHref: "https://www.google.com/maps?ll=27.677941,85.307323&z=16&t=h&hl=en&gl=NP&mapclient=embed&cid=9912620767158058476",
         note: "Courtyard-style dining for gatherings, lunch plans, and dinner.",
         number: "+977-980 320 3119"
 
@@ -69,7 +69,7 @@ const locations = [
         name: "Thamel",
         address: "Thamel, Kathmandu",
         image: "/PhooRes/Building/Thamel.jpeg",
-        mapHref: "https://www.google.com/maps/search/?api=1&query=Pho99%20Thamel%20Kathmandu",
+        mapHref: "https://www.google.com/maps?ll=27.713582,85.310185&z=15&t=m&hl=en&gl=NP&mapclient=embed&cid=9799723082701011482",
         note: "A lively city-center retreat for travelers and Kathmandu locals.",
         number: "+977-970 909 0400"
 
@@ -216,15 +216,10 @@ const ContactUs = () => {
                                 <p className="max-w-md text-xs leading-5 text-[#8a8984]!">
                                     Our team usually replies within the day. For urgent bookings, please call the nearest branch directly.
                                 </p>
-                                <Button
-                                    type="submit"
-                                    className="inline-flex min-h-12 w-80 items-center justify-center gap-2 rounded-full bg-[#ec1c25]!
-                                 text-sm 
-                                font-semibold capitalize  text-white! transition-all duration-300 hover:bg-[#c9141d]!"
-                                >
+                                <Buttons type="submit">
                                     Send Message
                                     <SendHorizonal className="h-4 w-4" aria-hidden="true" />
-                                </Button>
+                                </Buttons>
                             </div>
                         </form>
                     </div>
@@ -299,10 +294,10 @@ const ContactUs = () => {
                                         uppercase
                                         text-[#ec1c25]!"
                                     >
-                                        <Button>
+                                        <Buttons>
                                             View Map
                                             <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                                        </Button>
+                                        </Buttons>
                                     </Link>
                                 </div>
                             </div>

@@ -63,7 +63,7 @@ const MainNews = () => {
     return (
         <div className="bg-white relative z-10">
             <PageMainHero
-                heroImg="/PhooRes/Building/news.avif"
+                heroImg="/PhooRes/News/Phoo99news.png"
                 heading="
 News & media"
                 subHeading="Stories, updates & moments from Pho99"

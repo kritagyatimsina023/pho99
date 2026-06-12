@@ -145,7 +145,10 @@ const Chef = () => {
     return () => tl.kill()
   }, [])
   return (
-    <div ref={mainRef} data-theme="dark" className="h-[400vh] overflow-hidden" >
+    <div ref={mainRef} className="h-[400vh] relative" >
+      {/* Dummy divs for NavBar IntersectionObserver to pick up the theme */}
+      <div data-theme="light" className="absolute top-0 w-full h-[100vh] pointer-events-none" />
+      <div data-theme="dark" className="absolute top-[100vh] w-full h-[300vh] pointer-events-none" />
       <section ref={sectionRef} className="h-screen w-full relative z-10 " >
         <div ref={overlayRef} className="absolute bg-black w-full h-full z-10" ></div>
         <div className="h-full overflow-hidden " >

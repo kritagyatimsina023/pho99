@@ -15,6 +15,7 @@ interface NavLink {
     label: string;
     href: string;
     labelVi?: string;
+    text?: string
 }
 
 interface DoorFooterProps {
@@ -36,9 +37,9 @@ const CLOSED_LEFT = 0;
 const CLOSED_RIGHT = 0;
 
 const DEFAULT_LINKS: NavLink[] = [
-    { label: "Menu", href: "#menu" },
-    { label: "About", href: "#about" },
-    { label: "Contact", href: "#contact" },
+    { label: "Menu", href: "#menu", text: "OPEN THE DOOR TO VIETNAM" },
+    { label: "About", href: "#about", text: "WHERE TWO CULTURES MEET" },
+    { label: "Contact", href: "#contact", text: "Your Vietnamese Escape Awaits" },
 ];
 const navLinks = [
     { href: '/', label: 'Home' },
@@ -301,14 +302,14 @@ export default function DoorFooter({
                         <h1 className="text-center uppercase text-black! text-4xl sm:text-5xl md:text-6xl lg:text-8xl">Ninety</h1>
                         <h1 className="text-center uppercase text-red-500! text-4xl sm:text-5xl md:text-6xl lg:text-8xl">Nine</h1>
                     </div>
-                    <div className="border-zinc-800 max-w-7xl! mx-auto px-4 sm:px-6 md:px-8 py-4 md:py-5 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-2">
-                        <p className="text-zinc-800! text-xs text-center md:text-left">
+                    <div className="border-zinc-800 max-w-7xl! mx-auto px-4 sm:px-6 md:px-8 py-5 md:py-5 flex flex-col md:flex-row items-center justify-center md:justify-between gap-4 md:gap-2 w-full">
+                        <p className="text-zinc-800! text-[11px] sm:text-xs text-center md:text-left leading-relaxed px-4 md:px-0">
                             © 2026 All Rights Reserved | Pho Ninety Nine Restaurant Pvt. Ltd.
                         </p>
-                        <p className="text-zinc-500! text-xs flex items-center justify-center gap-1">
+                        <p className="text-zinc-500! text-[11px] sm:text-xs flex flex-wrap items-center justify-center gap-1.5 mt-2 md:mt-0">
                             Design and Developed by{" "}
-                            <a href="">
-                                <Image alt="webx" width={140} height={140} src={'/PhooRes/Logo/black-logo-png.webp'} className="w-10 h-10 sm:w-25 sm:h-10 md:w-[50px] md:h-[50px]" />
+                            <a href="https://www.webxnepal.com/" target="_blank" className="hover:opacity-80 transition-opacity flex items-center">
+                                <Image alt="webx" width={40} height={40} src={'/PhooRes/Logo/black-logo-png.webp'} className="w-8 h-8 sm:w-9 sm:h-9 md:w-[30px] md:h-[30px] object-contain" />
                             </a>
                         </p>
                     </div>
