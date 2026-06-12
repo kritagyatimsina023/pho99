@@ -157,18 +157,18 @@ const Chef = () => {
             className="w-full h-full object-cover" />
         </div>
         <div ref={detailRef} className="bg-transparent absolute inset-0 flex flex-col justify-center items-center w-full z-10 mb-12" >
-          <p ref={firstParaRef} className="text-center text-para-secondary text-2xl" >The author of the gastronomic show</p>
+          <p ref={firstParaRef} className="text-center text-para-secondary text-2xl" >The Architect of Authentic Taste</p>
           <Heading ref={headingRef} className="text-center heading-secondary" >Chef Sangdorje tamang</Heading>
           <div className="w-full flex flex-col items-center justify-center relative" >
             <div className="absolute z-30 left-[20%] top-[50%]" >
-              <p ref={firstQuote} className="heading-secondary text-5xl italic font-melfira" >
+              <p ref={firstQuote} className="heading-secondary text-3xl  md:text-5xl italic font-melfira" >
                 ‘I don't just cook</p>
             </div>
             <div className="absolute z-30 right-[20%] top-[60%] flex flex-col items-end" >
-              <p ref={secondQuote} className="heading-secondary font-heading text-5xl italic font-melfira" >
+              <p ref={secondQuote} className="heading-secondary md:font-heading text-3xl md:text-5xl italic font-melfira" >
                 I script with fish
               </p>
-              <span ref={thirdQuote} className="heading-secondary text-5xl italic font-melfira">and salt‘</span>
+              <span ref={thirdQuote} className="heading-secondary text-3xl md:text-5xl italic font-melfira">and salt‘</span>
             </div>
             <div className="relative" >
               <Image alt="Main-chef" className="object-cover"
@@ -184,14 +184,14 @@ const Chef = () => {
           <Heading ref={headingRef2} className="text-center heading-secondary" >Chef Pemba Tamang</Heading>
           <div className="w-full flex flex-col items-center justify-center relative" >
             <div className="absolute z-30 left-[20%] top-[50%]" >
-              <p ref={firstQuote2} className="heading-secondary text-5xl italic font-melfira" >
+              <p ref={firstQuote2} className="heading-secondary text-3xl  md:text-5xl italic font-melfira" >
                 ‘Cooking is an art</p>
             </div>
             <div className="absolute z-30 right-[20%] top-[60%] flex flex-col items-end" >
-              <p ref={secondQuote2} className="heading-secondary font-heading text-5xl italic font-melfira" >
+              <p ref={secondQuote2} className="heading-secondary font-heading text-3xl  md:text-5xl italic font-melfira" >
                 I paint with spices
               </p>
-              <span ref={thirdQuote2} className="heading-secondary text-5xl italic font-melfira">and passion‘</span>
+              <span ref={thirdQuote2} className="heading-secondary text-3xl  md:text-5xl italic font-melfira">and passion‘</span>
             </div>
             <div className="relative" >
               <Image alt="Main-chef-two" className="object-cover"

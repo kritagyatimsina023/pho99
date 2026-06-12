@@ -10,28 +10,16 @@ import { useGSAP } from "@gsap/react";
 import Button from "../Button";
 import CrystalLineSVG from "../CrystalLineSVG";
 
+import { useMediaQuery } from "react-responsive";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const saltCrystals = [
-  // {
-  //   top: "5%",
-  //   left: "2%",
-  //   width: 100,
-  //   rotate: -15,
-  //   source: "/PhooRes/Building/White-NewCrystal.png",
-  //   crystalSrc: "/Slider/CrystalS.svg",
-  // },
-  // {
-  //   top: "4%",
-  //   left: "30%",
-  //   width: 110,
-  //   rotate: 8,
-  //   source: "/About/Salt/salt_cold_2.webp",
-  //   crystalSrc: "/Slider/CrystalTwo.svg",
-  // },
   {
     top: "50%",
     right: "15%",
+    mobTop: "75%",
+    mobRight: "5%",
     width: 350,
     rotate: 0,
     source: "/PhooRes/Building/JhamshiKhel.png",
@@ -40,6 +28,8 @@ const saltCrystals = [
   {
     top: "10%",
     left: "12%",
+    mobTop: "5%",
+    mobLeft: "2%",
     width: 410,
     rotate: -8,
     source: "/PhooRes/Building/White-NewCrystal.png",
@@ -48,27 +38,13 @@ const saltCrystals = [
   {
     top: "55%",
     left: "58%",
+    mobTop: "35%",
+    mobLeft: "80%",
     width: 88,
     rotate: -15,
     source: "/PhooRes/Building/Flag.png",
     crystalSrc: "/Slider/CrystalFive.svg",
   },
-  // {
-  //   top: "4%",
-  //   right: "4%",
-  //   width: 80,
-  //   rotate: 15,
-  //   source: "/PhooRes/Building/NewCrystalImage.png",
-  //   crystalSrc: "/Slider/CrystalSix.svg",
-  // },
-  // {
-  //   bottom: "2%",
-  //   right: "6%",
-  //   width: 220,
-  //   rotate: 10,
-  //   source: "/PhooRes/Building/Flag.png",
-  //   crystalSrc: "/Slider/CystalSix.svg",
-  // },
 ];
 
 const SVGImage = [
@@ -193,6 +169,10 @@ const NewSaltMain = () => {
   const titleRefs = useRef<(HTMLHeadingElement | null)[]>([]);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const paraRef = useRef<(HTMLParagraphElement | null)[]>([]);
+  const isMobile = useMediaQuery({
+    maxWidth: 768
+  })
+
 
   useGSAP(() => {
     const track = courseTrackRef.current;
@@ -352,12 +332,12 @@ const NewSaltMain = () => {
             height={s.width}
             alt=""
             aria-hidden="true"
-            className="absolute z-10 pointer-events-none  select-none opacity-90"
+            className="absolute z-10 pointer-events-none select-none opacity-90 max-w-[40vw] md:max-w-none"
             style={{
-              top: s.top,
-              bottom: (s as any).bottom,
-              left: s.left,
-              right: s.right,
+              top: isMobile ? (s as any).mobTop || s.top : s.top,
+              bottom: isMobile ? (s as any).mobBottom || (s as any).bottom : (s as any).bottom,
+              left: isMobile ? (s as any).mobLeft || s.left : s.left,
+              right: isMobile ? (s as any).mobRight || s.right : s.right,
               width: s.width,
               transform: `rotate(${s.rotate}deg)`,
             }}
@@ -370,7 +350,7 @@ const NewSaltMain = () => {
         {/* Major content */}
         <div ref={contentWrapper} className="flex flex-col items-center justify-center">
           {/* <h2>Join Us Here</h2> */}
-          <Heading className="text-center text-8xl! heading-secondary">
+          <Heading className="text-center text-5xl! md:text-7xl! lg:text-8xl! px-4 md:px-0 heading-secondary">
             Four Locations, <br /> One Vietnamese Journey
           </Heading>
           {/* <p className="max-w-md pl-5 text-xl mx-auto mt-4 text-para-secondary">
@@ -399,12 +379,12 @@ const NewSaltMain = () => {
               height={120}
               alt=""
               aria-hidden="true"
-              className="absolute pointer-events-none select-none opacity-20"
+              className="absolute pointer-events-none select-none opacity-20 w-16 h-16 md:w-24 md:h-24 lg:w-[120px] lg:h-[120px]"
               style={{
-                top: s.top,
-                bottom: (s as any).bottom,
-                left: s.left,
-                right: s.right,
+                top: isMobile ? (s as any).mobTop || s.top : s.top,
+                bottom: isMobile ? (s as any).mobBottom || (s as any).bottom : (s as any).bottom,
+                left: isMobile ? (s as any).mobLeft || s.left : s.left,
+                right: isMobile ? (s as any).mobRight || s.right : s.right,
                 transform: `rotate(${s.rotate}deg)`,
               }}
             />
@@ -431,13 +411,13 @@ const NewSaltMain = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/70" />
               </div>
 
-              <div className="relative  z-10 w-full h-full flex flex-col justify-center px-10 md:px-24">
-                <div className="flex flex-col md:flex-row justify-between items-center md:items-end w-full h-full pb-20 pt-40">
+              <div className="relative z-10 w-full h-full flex flex-col justify-center px-6 md:px-12 lg:px-24">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end w-full h-full pb-16 pt-32 md:pb-20 md:pt-40">
                   <div className="flex flex-col w-full md:w-2/3 origin-left">
                     <span className="text-white! font-bold tracking-[0.2em] uppercase text-sm mb-4">
                       LOCATION.
                     </span>
-                    <Heading ref={(el) => { titleRefs.current[idx] = el; }} className="text-7xl md:text-[9rem] lg:text-[11rem] font-serif text-white! uppercase leading-[0.9]">
+                    <Heading ref={(el) => { titleRefs.current[idx] = el; }} className="text-5xl md:text-[7rem] lg:text-[11rem] font-serif text-white! uppercase leading-[0.9]">
                       {images.title}
                     </Heading>
                   </div>

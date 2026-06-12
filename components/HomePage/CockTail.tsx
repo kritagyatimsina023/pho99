@@ -154,14 +154,14 @@ const CockTail = () => {
           {/* Top label */}
           <h2>Drinks</h2>
           {/* Subheading */}
-          <div ref={contentWrapper} className="flex flex-col items-center" >
+          <div ref={contentWrapper} className="flex flex-col items-center px-4 md:px-8" >
             <div>
               <Heading ref={headingRef} className="text-center max-w-8xl opacity-0.45">
                 Signature cocktails paired with authentic Vietnamese flavors
               </Heading>
             </div>
             {/* Description */}
-            <p className="text-start max-w-sm text-para-secondary text-lg leading-[1.1]">
+            <p className="text-center md:text-start max-w-sm text-para-secondary text-lg leading-[1.1] mt-4 md:mt-0">
               Crafted with fresh ingredients and bold inspiration, each drink enhances the aromas, textures, and stories found in every dish.
             </p>
           </div>
@@ -169,7 +169,7 @@ const CockTail = () => {
           <div ref={drinksWrapper} className="h-[100vh] w-full">
             <div className="relative w-full flex flex-col overflow-hidden items-center mt-10">
               {/* Arch image */}
-              <div className="relative z-10 w-[560px] broder-b-2">
+              <div className="relative z-10 w-[90vw] md:w-[560px] max-w-[560px] border-b-2 border-transparent">
                 <div className="relative aspect-[480/500] overflow-hidden">
                   <svg
                     className="absolute inset-0 w-full h-full"
@@ -218,7 +218,7 @@ const CockTail = () => {
                       <Heading
                         key={drink.id}
                         ref={(el) => { titleRefs.current[i] = el }}
-                        className="absolute text-8xl! z-20 uppercase  text-center whitespace-nowrap leading-none tracking-tight"
+                        className="absolute text-4xl! md:text-7xl! lg:text-8xl! z-20 uppercase text-center whitespace-nowrap leading-none tracking-tight"
                       >
                         {drink.title}
                       </Heading>
@@ -234,7 +234,7 @@ const CockTail = () => {
                   ref={(el) => { descRefs.current[i] = el }}
                   className="absolute inset-0 flex items-center justify-center"
                 >
-                  <p className="text-center text-xl! leading-[1.1]">
+                  <p className="text-center text-lg! md:text-xl! leading-[1.1] px-4">
                     {drink.desc}
                   </p>
                 </div>

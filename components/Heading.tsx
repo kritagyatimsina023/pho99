@@ -11,7 +11,7 @@ const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
     return (
       <h1
         ref={ref}
-        className={`${className} font-semibold capitalize text-8xl`}
+        className={`font-semibold capitalize text-5xl md:text-6xl lg:text-8xl px-4 md:px-8 lg:px-0 ${className}`}
         style={style}
       >
         {children}

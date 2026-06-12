@@ -100,7 +100,7 @@ export default function DoorFooter({
     const toggle = useCallback(() => { isOpen.current ? close() : open(); }, [open, close]);
 
     return (
-        <footer className={`relative flex flex-col justify-center items-center bg-white overflow-hidden min-h-[100px] pt-0 ${className}`}>
+        <footer className={`relative flex flex-col justify-center items-center bg-white overflow-hidden min-h-[100px] pt-0 mt-14 ${className}`}>
 
             <style>{`
                 @keyframes doorRipple {
@@ -277,7 +277,7 @@ export default function DoorFooter({
                         ))}
                     </ul>
                 </div> */}
-                <div className="relative z-40 w-full">
+                {/* <div className="relative z-40 w-full">
                     <div className="border-t border-zinc-800/10 flex justify-center py-6 overflow-hidden">
                         <Heading className="text-center uppercase text-red-500!">Pho</Heading>
                         <Heading className="text-center uppercase text-black!">Ninety</Heading>
@@ -291,6 +291,24 @@ export default function DoorFooter({
                             Design and Developed by{" "}
                             <a href="">
                                 <Image alt="webx" width={50} height={50} src={'/PhooRes/Logo/black-logo-png.webp'} />
+                            </a>
+                        </p>
+                    </div>
+                </div> */}
+                <div className="relative z-40  w-full">
+                    <div className="border-t border-zinc-800/10 flex justify-center py-4 md:py-6 overflow-hidden">
+                        <h1 className="text-center uppercase text-red-500! text-4xl sm:text-5xl md:text-6xl lg:text-8xl">Pho</h1>
+                        <h1 className="text-center uppercase text-black! text-4xl sm:text-5xl md:text-6xl lg:text-8xl">Ninety</h1>
+                        <h1 className="text-center uppercase text-red-500! text-4xl sm:text-5xl md:text-6xl lg:text-8xl">Nine</h1>
+                    </div>
+                    <div className="border-zinc-800 max-w-7xl! mx-auto px-4 sm:px-6 md:px-8 py-4 md:py-5 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-2">
+                        <p className="text-zinc-800! text-xs text-center md:text-left">
+                            © 2026 All Rights Reserved | Pho Ninety Nine Restaurant Pvt. Ltd.
+                        </p>
+                        <p className="text-zinc-500! text-xs flex items-center justify-center gap-1">
+                            Design and Developed by{" "}
+                            <a href="">
+                                <Image alt="webx" width={140} height={140} src={'/PhooRes/Logo/black-logo-png.webp'} className="w-10 h-10 sm:w-25 sm:h-10 md:w-[50px] md:h-[50px]" />
                             </a>
                         </p>
                     </div>

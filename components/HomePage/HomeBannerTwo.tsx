@@ -28,7 +28,7 @@ const HomeBannerTwo = ({ source }: HomeBannerProps) => {
     )
   }, [])
   return (
-    <section ref={sectionRef} className="min-h-[80vh] relative z-10 overflow-hidden" >
+    <section ref={sectionRef} className="min-h-[40vh] md:min-h-[60vh] lg:min-h-[80vh] relative z-10 overflow-hidden" >
       <div className="h-full w-full absolute inset-0" >
         <Image
           ref={imageRef}

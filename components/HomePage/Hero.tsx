@@ -74,7 +74,7 @@ const Hero = () => {
           alt="hero-background"
         />
         <div className="absolute bg-black/20 z-20 inset-0" ></div>
-        <Heading ref={headingRef} className="relative text-7xl! w-full  h-full z-30 flex items-center justify-center text-center text-white!">Authentic Vietnamese Flavors <br />
+        <Heading ref={headingRef} className="relative w-full h-full z-30 flex items-center justify-center text-center text-white!">Authentic Vietnamese Flavors <br />
           Serving Every Plate</Heading>
         {/* <Heading ref={headingRef} className="relative w-full h-full z-30 flex-col  flex items-center justify-center text-center text-white!">Welcome <br /> To
           <span className="text-red-600!" > Pho99</span>
@@ -110,7 +110,7 @@ const Hero = () => {
         // style={{ scale: 1.15 }}
         />
         <div className="absolute inset-0 bg-black/30" />
-        <Heading ref={headingRefThree} className="relative text-7xl! w-full h-full z-30 flex items-center justify-center text-center text-white!">Authentic Dining</Heading>
+        <Heading ref={headingRefThree} className="relative w-full h-full z-30 flex items-center justify-center text-center text-white!">Authentic Dining</Heading>
       </div>
     </div>
   );
