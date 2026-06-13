@@ -170,7 +170,7 @@ export default function FooterDoor({
     return (
         <div
             ref={rootRef}
-            className={`relative isolate h-[min(105vw,480px)] w-[min(78vw,340px)] cursor-pointer select-none ${className}`}
+            className={`relative isolate h-[min(105vw,480px)] w-[min(78vw,340px)] cursor-pointer select-none overflow-x-hidden ${className}`}
 
             onMouseEnter={!isTouch ? openDoor : undefined}
             onMouseLeave={!isTouch ? closeDoor : undefined}

@@ -10,11 +10,11 @@ import LocationInfo from "./LocationInfo";
 
 const HomeMain = () => {
   return (
-    <>
+    <div className="relative w-full overflow-x-hidden">
       <div className="relative w-full z-0">
         <Hero />
       </div>
-      <div className="relative w-full z-10 ">
+      <div className="relative w-full z-10">
         <HomeAbout />
         <HomeBanner source="/PhooRes/Building/building-Three.png" />
         <LocationInfo />
@@ -23,7 +23,7 @@ const HomeMain = () => {
         <Chef />
         <Reservation />
       </div>
-    </>
+    </div>
   );
 };
 
