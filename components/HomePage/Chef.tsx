@@ -156,7 +156,7 @@ const Chef = () => {
             ref={imageRef}
             alt="Banner-Two"
             fill
-            src={'/Chef/teamPic.webp'}
+            src={'/PhooRes/Chef/team.webp'}
             className="w-full h-full object-cover" />
         </div>
         <div ref={detailRef} className="bg-transparent absolute inset-0 flex flex-col justify-center items-center w-full z-10 mb-12" >
