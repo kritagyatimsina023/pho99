@@ -2,75 +2,11 @@
 import Image from "next/image";
 import React, { useRef } from "react";
 import Heading from "../Heading";
-import Buttons from "../Buttons";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap"
 import Button from "../Button";
-const saltCrystals = [
-  {
-    top: "5%",
-    left: "2%",
-    width: 100,
-    rotate: -15,
-    source: "/About/Salt/salt_cold_1_1.webp",
-    crystalSrc: "/Slider/CrystalS.svg",
+import Link from "next/link";
 
-  },
-  {
-    top: "4%",
-    left: "30%",
-    width: 110,
-    rotate: 8,
-    source: "/About/Salt/salt_cold_2.webp",
-    crystalSrc: "/Slider/CrystalTwo.svg",
-
-  },
-  {
-    top: "20%",
-    right: "15%",
-    width: 150,
-    rotate: 0,
-    source: "/About/Salt/salt_cold_5.webp",
-    crystalSrc: "/Slider/CrystalThree.svg",
-
-  },
-  {
-    top: "40%",
-    left: "12%",
-    width: 410,
-    rotate: -8,
-    source: "/About/Salt/salt_cold_4.webp",
-    crystalSrc: "/Slider/CrystalFour.svg",
-
-  },
-  {
-    top: "55%",
-    left: "58%",
-    width: 88,
-    rotate: -15,
-    source: "/About/Salt/salt_cold_6.webp",
-    crystalSrc: "/Slider/CrystalFive.svg",
-
-  },
-  {
-    top: "4%",
-    right: "4%",
-    width: 80,
-    rotate: 15,
-    source: "/About/Salt/salt_cold_7.webp",
-    crystalSrc: "/Slider/CrystalSix.svg",
-
-  },
-  {
-    bottom: "2%",
-    right: "6%",
-    width: 220,
-    rotate: 10,
-    source: "/About/Salt/salt_cold_3.webp",
-    crystalSrc: "/Slider/CrystalS.svg",
-
-  },
-];
 const Reservation = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
@@ -81,63 +17,7 @@ const Reservation = () => {
   const crystalRef = useRef<HTMLImageElement[] | null>([])
   const imgRef = useRef<HTMLImageElement | null>(null)
   const imgWrapperRefs = useRef<(HTMLDivElement | null)[]>([])
-  // useGSAP(() => {
-  //   if (!sectionRef.current || !contentRef.current) return;
-  //   const tl = gsap.timeline({
-  //     scrollTrigger: {
-  //       trigger: sectionRef.current,
-  //       start: "top top",
-  //       end: "150% top",
-  //       scrub: 1,
-  //       pin: true,
-  //       pinSpacing: true,
-  //       markers: true
-  //     }
-  //   });
-  //   tl.fromTo(
-  //     contentRef.current,
-  //     { clipPath: "circle(0.0% at 50% 100%)" },
-  //     { clipPath: "circle(100% at 50% 50%)", ease: "none", duration: 1 }
-  //   ).fromTo(subHeadingRef.current,
-  //     { opacity: 0 },
-  //     { opacity: 1 },
-  //   )
-  //     .fromTo(headingRef.current,
-  //       { opacity: 0 },
-  //       { opacity: 0.25, duration: 0.3, ease: "power2.out" },
-  //       "+=0.2"
-  //     )
-  //     .fromTo(headingRef.current,
-  //       { opacity: 0.25 },
-  //       { opacity: 0.35, duration: 0.3, ease: "power2.out" }, "+=0.2"
-  //     )
-  //     .fromTo(headingRef.current,
-  //       { opacity: 0.35 },
-  //       { opacity: 0.45, duration: 0.3, ease: "power2.out" }, "+=0.2"
-  //     )
-  //     .fromTo(headingRef.current,
-  //       { opacity: 0.45 },
-  //       { opacity: 1, duration: 0.5, ease: "power2.out" }, "+=0.2"
-  //     ).fromTo(paraRef.current,
-  //       { opacity: 0 },
-  //       { opacity: 0.25, duration: 0.3, ease: "power2.out" }, "+=0.2"
-  //     ).fromTo(paraRef.current,
-  //       { opacity: 0.25 },
-  //       { opacity: 0.45, duration: 0.3, ease: "power2.out" }, "+=0.2"
-  //     ).fromTo(paraRef.current,
-  //       { opacity: 0.45 },
-  //       { opacity: 1, duration: 0.3, ease: "power2.out" }, "+=0.2"
-  //     ).fromTo(btnRef.current,
-  //       { opacity: 0 },
-  //       { opacity: 0.25, duration: 0.3, ease: "power2.out" }, "+=0.2"
-  //     ).fromTo(btnRef.current,
-  //       { opacity: 0.25 },
-  //       { opacity: 0.45, duration: 0.3, ease: "power2.out" }, "+=0.2"
-  //     ).fromTo(btnRef.current,
-  //       { opacity: 0.45 },
-  //       { opacity: 1, duration: 0.3, ease: "power2.out" }, "+=0.2"
-  //     )
-  // }, []);
+
   useGSAP(() => {
     if (!sectionRef.current || !contentRef.current || !crystalRef.current) return;
     const fadeIn = (target: gsap.TweenTarget, stages = [0.25, 0.45, 1], offset = "<+=0.1") => {
@@ -197,7 +77,7 @@ const Reservation = () => {
     fadeIn(headingRef.current, [0.25, 0.35, 0.45, 1]);
     fadeIn(paraRef.current);
     fadeIn(btnRef.current);
-    // Scattered images: reveal from center to original position
+
     imgWrapperRefs.current.forEach((el) => {
       if (!el) return;
       tl.fromTo(
@@ -218,7 +98,7 @@ const Reservation = () => {
       ref={contentRef}
       className="bg-white! relative z-20 min-h-screen w-full overflow-hidden"
     >
-      {/* Food photo collage — scattered around edges */}
+
       <div className="absolute inset-0 w-full h-full pointer-events-none">
 
         {/* Top-left tall photo */}
@@ -261,7 +141,7 @@ const Reservation = () => {
           <Image src="/PhooRes/Building/Thamel.jpeg" alt="" fill className="object-cover" />
         </div>
 
-        {/* Radial fade to keep center clean for text */}
+
         <div
           className="absolute inset-0"
           style={{
@@ -271,16 +151,16 @@ const Reservation = () => {
         />
       </div>
 
-      {/* Center content */}
+
       <div className="relative z-20 flex flex-col items-center justify-center min-h-screen py-30 px-4">
 
         {/* Pill label */}
         <div ref={subHeadingRef} className="flex items-center gap-2 mb-6">
-          {/* <span className="w-1.5 h-1.5 rounded-full bg-red-500 inline-block" /> */}
+
           <span className="text-xs font-semibold tracking-[0.25em] uppercase text-red-500">
             Invitation
           </span>
-          {/* <span className="w-1.5 h-1.5 rounded-full bg-red-500 inline-block" /> */}
+
         </div>
         <Heading
           ref={headingRef}
@@ -298,21 +178,13 @@ const Reservation = () => {
           Boudha, Jhamsikhel, or Thamel.
         </p>
 
-        {/* Location pills */}
-        {/* <div className="flex items-center gap-2 mt-5 flex-wrap justify-center">
-          {["Lazimpat", "Boudha", "Jhamsikhel", "Thamel"].map((loc) => (
-            <span
-              key={loc}
-              className="text-xs px-3 py-1 rounded-full border border-zinc-200 text-zinc-500 bg-white/80"
-            >
-              {loc}
-            </span>
-          ))}
-        </div> */}
+
         <div className="mt-8">
-          <Button ref={btnRef}>
-            Order Now
-          </Button>
+          <Link href={"/contact"} >
+            <Button ref={btnRef}>
+              Order Now
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

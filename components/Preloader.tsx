@@ -110,7 +110,6 @@ const Preloader = () => {
           >
             <span className="font-medium tracking-wide ">Experience with Silent </span>
           </Button>
-
         </div>
       </div>
     </div>

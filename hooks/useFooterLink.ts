@@ -6,17 +6,19 @@ export interface FooterLink {
     label: string;
     href: string;
     text?: string;
+    subText?: string;
+    buttonText?: string;
 }
 
 const ROUTE_MAP: Record<string, FooterLink> = {
-    "/": { label: "Menu", href: "/menu", text: "OPEN THE DOOR TO VIETNAM" },
-    "/menu": { label: "About", href: "/about", text: "WHERE TWO CULTURES MEET" },
-    "/about": { label: "Contact Us", href: "/contact", text: "Your Vietnamese Escape Awaits" },
-    "/contact": { label: "Home", href: "/", text: "WELCOME TO PHO 99" },
-    "/news": { label: "Home", href: "/", text: "WELCOME TO PHO 99" },
+    "/": { label: "Menu", href: "/menu", text: "YOUR JOURNEY TO", subText: "VIETNAM", buttonText: "Begin Journey" },
+    "/menu": { label: "About", href: "/about", text: "WHERE TWO CULTURES", subText: "MEET", buttonText: "Our Story" },
+    "/about": { label: "Contact Us", href: "/contact", text: "YOUR VIETNAMESE ESCAPE", subText: "AWAITS", buttonText: "Order Now" },
+    "/contact": { label: "Home", href: "/", text: "WELCOME TO", subText: "PHO 99", buttonText: "Discover More" },
+    "/news": { label: "Home", href: "/", text: "WELCOME TO", subText: "PHO 99", buttonText: "Discover More" },
 };
 
-const FALLBACK: FooterLink = { label: "Home", href: "/", text: "WELCOME TO PHO 99" };
+const FALLBACK: FooterLink = { label: "Home", href: "/", text: "WELCOME TO", subText: "PHO 99", buttonText: "Begin Journey" };
 
 export function useFooterLink(): FooterLink {
     const pathname = usePathname();

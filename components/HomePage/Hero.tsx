@@ -76,9 +76,7 @@ const Hero = () => {
         <div className="absolute bg-black/20 z-20 inset-0" ></div>
         <Heading ref={headingRef} className="relative w-full h-full z-30 flex items-center justify-center text-center text-white!">Authentic Vietnamese Flavors <br />
           Serving Every Plate</Heading>
-        {/* <Heading ref={headingRef} className="relative w-full h-full z-30 flex-col  flex items-center justify-center text-center text-white!">Welcome <br /> To
-          <span className="text-red-600!" > Pho99</span>
-        </Heading> */}
+
       </div>
       <div
         ref={contentRef1}
@@ -91,7 +89,7 @@ const Hero = () => {
           className="w-full h-full object-cover"
           fill
           alt="hero-reveal"
-        // style={{ scale: 0.15 }}
+
         />
         <div className="absolute inset-0 bg-black/30" />
         <Heading ref={headingRefTwo} className="relative w-full h-full z-30 flex items-center justify-center text-center text-white!">Inspired Spaces</Heading>
@@ -107,7 +105,7 @@ const Hero = () => {
           className="w-full h-full object-cover"
           fill
           alt="hero-reveal"
-        // style={{ scale: 1.15 }}
+
         />
         <div className="absolute inset-0 bg-black/30" />
         <Heading ref={headingRefThree} className="relative w-full h-full z-30 flex items-center justify-center text-center text-white!">Authentic Dining</Heading>

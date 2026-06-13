@@ -508,13 +508,13 @@ const AboutUsMain = () => {
                     ].map((stat, i) => (
                         <div
                             key={i}
-                            className="group relative z-10 flex flex-col items-center justify-center px-4 py-4 md:py-7"
+                            className="group relative z-10 flex flex-col items-center justify-center px-4 py-4 md:py-3"
                         >
                             {/* Separator line for desktop */}
                             {i !== 2 && (
                                 <div className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 w-8 h-3/4 flex-col items-center justify-center translate-x-1/2 z-20">
                                     <div className="w-[1px] flex-1 bg-red-200/80" />
-                                    <div className="relative w-5 h-5 shrink-0 my-3">
+                                    <div className="relative w-10 h-10 shrink-0 my-3">
                                         <Image src="/PhooRes/Building/lotusDesign.png" fill alt="" className="object-contain" />
                                     </div>
                                     <div className="w-[1px] flex-1 bg-red-200/80" />
@@ -538,7 +538,6 @@ const AboutUsMain = () => {
                             <span className="text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.15em] text-[#333333]">
                                 {stat.label}
                             </span>
-
                             {/* Red Accent Line */}
                             <Arrow className="w-16 h-3 mt-2 mb-3" />
 

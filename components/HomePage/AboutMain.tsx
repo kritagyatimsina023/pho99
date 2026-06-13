@@ -46,7 +46,7 @@ const AboutMain = () => {
         start: "top 75%",
         end: "bottom 35%",
         scrub: true,
-        // markers: true
+
       }
     })
     tl2.fromTo(img.current, {
@@ -66,7 +66,7 @@ const AboutMain = () => {
         start: "top 75%",
         end: "bottom top",
         scrub: true,
-        // markers: true
+
       }
     })
     tl3.fromTo(text.current, {
@@ -128,9 +128,9 @@ const AboutMain = () => {
           </Heading>
         </div>
         <div className="relative -mt-10 flex flex-col items-center">
-          {/* Shared width wrapper — arch + text share the same width */}
+
           <div ref={outerSvg} className="w-[460px]">
-            {/* Arch */}
+
             <div ref={imgSvg} className="relative aspect-[480/500]">
               <svg
                 className="absolute inset-0 w-full h-full"

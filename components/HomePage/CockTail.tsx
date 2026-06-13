@@ -36,14 +36,7 @@ const drinks = [
     roman: "IV"
 
   },
-  // {
-  //   id: 5,
-  //   title: "God Of the  Pharaohs",
-  //   desc: "apple , banana mango guava test ",
-  //   img: "/PhooRes/Drinks/drinks-5.png",
-  //   roman: "V"
 
-  // }
 ];
 const CockTail = () => {
   const drinksWrapper = useRef<HTMLDivElement | null>(null)
@@ -67,7 +60,7 @@ const CockTail = () => {
         // markers: true
       }
     })
-    // Initial positioning
+
     titleRefs.current.forEach((el, i) => {
       if (i > 0) gsap.set(el, { yPercent: 200, opacity: 1 })
     })
@@ -82,13 +75,13 @@ const CockTail = () => {
       const label = `slide${i}`;
       tl.addLabel(label)
       tl.to(titleRefs.current[i], {
-        y: -500, // Reaches the top of the SVG arch
+        y: -500,
         opacity: 0,
         ease: "none",
         duration: 1
       }, label)
       tl.to(imgRefs.current[i], {
-        yPercent: -100, // Slides up out of view
+        yPercent: -100,
         ease: "none",
         duration: 1
       }, label)
@@ -96,7 +89,7 @@ const CockTail = () => {
         opacity: 0,
         ease: "none",
       }, label)
-      // Line indicator: current goes inactive (gray)
+
       tl.to(romanRef.current[i], {
         backgroundColor: '#d1ccc3',
         ease: "none",
@@ -145,22 +138,19 @@ const CockTail = () => {
   }, [])
   return (
     <section className="min-h-screen relative w-full overflow-hidden">
-      {/* Vertical lines */}
-      {/* <div className="h-full absolute top-0 left-[10%] w-0.5 bg-[#E1DED5]"></div>
-      <div className="h-full absolute top-0 left-[28%] w-0.5 bg-[#E1DED5]"></div>
-      <div className="h-full absolute top-0 right-72 w-0.5 bg-[#E1DED5]"></div> */}
+
       <div className="relative z-20">
         <div className="flex flex-col items-center py-30">
-          {/* Top label */}
+
           <h2>Drinks</h2>
-          {/* Subheading */}
+
           <div ref={contentWrapper} className="flex flex-col items-center px-4 md:px-8" >
             <div>
               <Heading ref={headingRef} className="text-center max-w-8xl opacity-0.45">
                 Signature cocktails paired with authentic Vietnamese flavors
               </Heading>
             </div>
-            {/* Description */}
+
             <p className="text-center md:text-start max-w-sm text-para-secondary text-lg leading-[1.1] mt-4 md:mt-0">
               Crafted with fresh ingredients and bold inspiration, each drink enhances the aromas, textures, and stories found in every dish.
             </p>
