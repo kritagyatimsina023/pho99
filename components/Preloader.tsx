@@ -96,7 +96,7 @@ const Preloader = () => {
           </Heading>
         </div>
         {/* Options */}
-        <div className="flex flex-col sm:flex-col gap-3 w-fit mx-auto">
+        <div className="flex flex-col gap-3 items-center">
           <Button
             onClick={() => handleChoice(true)}
             className="preloader-btn-2 text-white!"

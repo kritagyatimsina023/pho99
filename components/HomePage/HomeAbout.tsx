@@ -108,21 +108,23 @@ const HomeAbout = () => {
         </div>
       </div>
       {/* Circular Badge right below right image */}
-      <div className="hidden   lg:block absolute right-12 xl:right-32 top-[calc(320px+37vw+20px)]  w-32 h-32 z-20">
-        <div className="relative w-full  h-full flex items-center justify-center animate-[spin_10s_linear_infinite]">
-          <svg viewBox="0 0 100 100" className="w-full h-full fill-none">
-            <path id="circlePath" color="#C10008" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
-            <text className="text-[10px] fill-[#000000] tracking-[4px] font-bold uppercase">
-              <textPath href="#circlePath" startOffset="0%">ORDER NOW • ORDER NOW • </textPath>
-            </text>
-          </svg>
-        </div>
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-12 h-12  rounded-full flex items-center justify-center shadow-md">
-            <Image alt="foodmandu" className="rounded-full" width={50} height={50} src={'/PhooRes/Logo/foodmanduLogo.png'} />
+      <Link target="_blank" className="cursor-pointer" href={"https://foodmandu.com/Restaurant/Index?q=Pho&k=restaurant&c=&cty=1&lat=27.695055469044398&lng=85.41302327312926&sortby=4"}>
+        <div className="hidden   lg:block absolute right-12 xl:right-32 top-[calc(320px+37vw+20px)]  w-32 h-32 z-20">
+          <div className="relative w-full  h-full flex items-center justify-center animate-[spin_10s_linear_infinite]">
+            <svg viewBox="0 0 100 100" className="w-full h-full fill-none">
+              <path id="circlePath" color="#C10008" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
+              <text className="text-[10px] fill-[#000000] tracking-[4px] font-bold uppercase">
+                <textPath href="#circlePath" startOffset="0%">ORDER NOW • ORDER NOW • </textPath>
+              </text>
+            </svg>
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="w-12 h-12  rounded-full flex items-center justify-center shadow-md">
+              <Image alt="foodmandu" className="rounded-full" width={50} height={50} src={'/PhooRes/Logo/foodmanduLogo.png'} />
+            </div>
           </div>
         </div>
-      </div>
+      </Link>
       {/* Bottom Center Image (Wide Arch shape) */}
       <div
         className="relative w-[90%] md:w-[50%] max-w-[600px] aspect-[15/10] mx-auto mt-32 md:mt-48 z-10"
@@ -132,7 +134,6 @@ const HomeAbout = () => {
           <Image src="/PhooRes/HeroSlider/PhoFood-1.avif" alt="Restaurant Interior" fill className="object-cover object-left" />
         </div>
       </div>
-
     </div>
   );
 };

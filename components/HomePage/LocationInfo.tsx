@@ -9,6 +9,7 @@ import { useGSAP } from "@gsap/react";
 import CrystalLineSVG from "../CrystalLineSVG";
 
 import { useMediaQuery } from "react-responsive";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -54,24 +55,32 @@ const Courses = [
     title: "Lazimpat",
     desc: `Located in the heart of Lazimpat, Pho99 introduced Kathmandu to authentic Vietnamese cuisine through cherished family recipes. Known for its comforting bowls of pho and warm hospitality, it has become a favorite destination for locals, expatriates, and visitors alike.`,
     src: "/PhooRes/Building/heroBuildingOne.jpg",
+    mapHref: "https://www.google.com/maps?ll=27.725304,85.322856&z=16&t=h&hl=en&gl=NP&mapclient=embed&cid=5968072047316399150",
+
   },
   {
     id: 2,
     title: "Boudha",
     desc: `Situated near the iconic Boudhanath Stupa, Pho99 Boudha offers a welcoming dining experience inspired by the rich flavors of Vietnam. Surrounded by the area's vibrant cultural atmosphere, it attracts both travelers and locals seeking authentic cuisine.`,
     src: "/PhooRes/Building/Bouddha.jpg",
+    mapHref: "https://www.google.com/maps?ll=27.72104,85.361585&z=13&t=h&hl=en&gl=NP&mapclient=embed&cid=17330905215922559191",
+
   },
   {
     id: 3,
     title: "Jhamsikhel",
     desc: `Located in the vibrant neighborhood of Jhamsikhel, this charming outlet features cozy indoor seating and a beautiful courtyard garden. Its warm ambiance and authentic Vietnamese dishes make it an ideal setting for gatherings, casual meals, and special occasions.`,
     src: "/PhooRes/Building/Jhamsikhel.jpg",
+    mapHref: "https://www.google.com/maps?ll=27.677941,85.307323&z=16&t=h&hl=en&gl=NP&mapclient=embed&cid=9912620767158058476",
+
   },
   {
     id: 4,
     title: "Thamel",
     desc: `Set in Kathmandu's bustling tourist district, Pho99 Thamel provides a welcoming retreat amidst the energy of the city. Surrounded by shops, cafés, and cultural attractions, it offers guests authentic Vietnamese flavors in a lively and memorable atmosphere.`,
     src: "/PhooRes/Building/Thamel.jpeg",
+    mapHref: "https://www.google.com/maps?ll=27.713582,85.310185&z=15&t=m&hl=en&gl=NP&mapclient=embed&cid=9799723082701011482",
+
   },
 ];
 
@@ -177,7 +186,7 @@ const LocationInfo = () => {
       tl.to(
         courseEl,
         {
-          opacity: 0,
+          autoAlpha: 0,
           ease: "power2.in",
           duration: 1.35,
         },
@@ -315,9 +324,9 @@ const LocationInfo = () => {
                     </Heading>
                   </div>
 
-                  <a href={`https://maps.google.com/?q=Pho99+${images.title}+Kathmandu`}
+                  <Link href={images.mapHref}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    // rel="noopener noreferrer"
                     className="flex items-center relative z-50 gap-3 group mb-2 pointer-events-auto"
                   >
                     <span className="text-white! text-xs tracking-[0.2em] uppercase group-hover:text-white transition-colors duration-300">
@@ -334,7 +343,7 @@ const LocationInfo = () => {
                         />
                       </svg>
                     </div>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
