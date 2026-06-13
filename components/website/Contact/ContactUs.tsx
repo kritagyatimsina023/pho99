@@ -13,7 +13,6 @@ import {
     SendHorizonal,
 } from "lucide-react";
 import Heading from "@/components/Heading";
-import Buttons from "@/components/Buttons";
 import Layout from "@/components/Layout";
 import PageMainHero from "@/components/PageMainHero";
 import Button from "@/components/Button";
