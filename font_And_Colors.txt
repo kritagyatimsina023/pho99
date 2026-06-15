@@ -1,0 +1,23 @@
+for headings 
+Arial - 400
+
+Family
+Arial, Helvetica, sans-serif
+
+
+for navs,and desctiption (P or spans)
+Inter - 400
+
+
+for about section headings all the section
+LTRemark - 400
+
+Family
+LTRemark
+
+
+
+colors -----> 
+About section colors 
+bg-color  :  #F7F2E8
+bg-color of the section: #1E242E

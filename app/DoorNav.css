@@ -1,0 +1,264 @@
+/* ============================================================
+   DoorNav.css — scoped with .pho99- prefix
+   Import once alongside DoorNav.tsx
+   ============================================================ */
+
+/* ── Scene container ── */
+.pho99-door-scene {
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  /* Perspective lives here so both panels share the same vanishing point */
+  perspective: 1200px;
+}
+
+/* ── Interior nav ── */
+.pho99-nav-interior {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #110804;
+  /* Arch top to match door silhouette — adjust to fit your door images */
+  border-radius: 50% 50% 0 0 / 12% 12% 0 0;
+  overflow: hidden;
+}
+
+/* Warm radial glow at centre */
+.pho99-nav-glow {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201, 169, 110, 0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Brand name */
+.pho99-nav-brand {
+  font-family: "Cormorant Garamond", "Palatino Linotype", Georgia, serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: rgba(201, 169, 110, 0.45);
+  margin-bottom: 36px;
+  /* GSAP drives opacity & translateY — start hidden & shifted */
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* Nav links wrapper */
+.pho99-nav-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Individual nav link */
+.pho99-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 0;
+  width: 220px;
+  text-decoration: none;
+  border-bottom: 0.5px solid rgba(201, 169, 110, 0.12);
+  position: relative;
+  /* GSAP start state */
+  opacity: 0;
+  transform: translateY(14px);
+  transition: letter-spacing 0.3s ease;
+}
+
+.pho99-nav-link:first-child {
+  border-top: 0.5px solid rgba(201, 169, 110, 0.12);
+}
+
+/* Expanding underline on hover */
+.pho99-nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -0.5px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 48%;
+  height: 0.5px;
+  background: #c9a96e;
+  transition: transform 0.35s ease;
+}
+
+.pho99-nav-link:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* Vietnamese label (muted, sits to the left) */
+.pho99-nav-link-vi {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: rgba(201, 169, 110, 0.35);
+  min-width: 72px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* English label */
+.pho99-nav-link-en {
+  font-family: "Cormorant Garamond", "Palatino Linotype", Georgia, serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  transition: color 0.3s ease, letter-spacing 0.3s ease;
+  min-width: 90px;
+}
+
+.pho99-nav-link:hover .pho99-nav-link-en {
+  color: #f0d090;
+  letter-spacing: 0.38em;
+}
+
+/* CTA button */
+.pho99-nav-cta {
+  margin-top: 30px;
+  padding: 13px 44px;
+  border: 1px solid rgba(201, 169, 110, 0.45);
+  border-radius: 2px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  /* GSAP start state */
+  opacity: 0;
+  transform: translateY(14px);
+  transition: color 0.28s ease, border-color 0.28s ease;
+}
+
+.pho99-nav-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #c9a96e;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s ease;
+  z-index: 0;
+}
+
+.pho99-nav-cta span {
+  position: relative;
+  z-index: 1;
+}
+
+.pho99-nav-cta:hover {
+  color: #1a0c03;
+  border-color: #c9a96e;
+}
+
+.pho99-nav-cta:hover::before {
+  transform: scaleX(1);
+}
+
+/* ── Door panels wrapper ── */
+.pho99-door-panels {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  pointer-events: none;
+}
+
+/* ── Individual door panel ── */
+.pho99-door-panel {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  will-change: transform;
+  transform-style: preserve-3d;
+  pointer-events: all;
+  overflow: hidden;
+}
+
+.pho99-door-panel--left {
+  transform-origin: left center;
+}
+
+.pho99-door-panel--right {
+  transform-origin: right center;
+}
+
+.pho99-door-panel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Inner-edge shadow — adds depth as panel opens */
+.pho99-door-panel-shadow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to right,
+      rgba(0, 0, 0, 0.28) 0%,
+      transparent 55%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.pho99-door-panel--right .pho99-door-panel-shadow {
+  background: linear-gradient(to left,
+      rgba(0, 0, 0, 0.28) 0%,
+      transparent 55%);
+}
+
+/* Scene hover triggers shadow */
+.pho99-door-scene:hover .pho99-door-panel-shadow {
+  opacity: 1;
+}
+
+/* ── Hover hint ── */
+.pho99-door-hint {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(201, 169, 110, 0.4);
+  z-index: 10;
+  pointer-events: none;
+  white-space: nowrap;
+  /* GSAP fades this out on open */
+}
+
+/* ── Reduced motion override ── */
+@media (prefers-reduced-motion: reduce) {
+
+  .pho99-door-panel,
+  .pho99-nav-link-en,
+  .pho99-nav-cta {
+    transition: none !important;
+  }
+}
