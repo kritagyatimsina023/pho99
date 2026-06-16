@@ -90,7 +90,7 @@ const Courses = [
     id: 4,
     title: "Thamel",
     desc: `Set in Kathmandu's bustling tourist district, Pho99 Thamel provides a welcoming retreat amidst the energy of the city. Surrounded by shops, cafés, and cultural attractions, it offers guests authentic Vietnamese flavors in a lively and memorable atmosphere.`,
-    src: "/PhooRes/Building/ThamelPic.png",
+    src: "/PhooRes/Building/PhoThamel.png",
     mapHref: "https://www.google.com/maps?ll=27.713582,85.310185&z=15&t=m&hl=en&gl=NP&mapclient=embed&cid=9799723082701011482",
 
   },

@@ -80,17 +80,15 @@ const locations = [
   {
     name: "Thamel",
     address: "Thamel, Kathmandu",
-    image: "/PhooRes/Building/Thamel.jpeg",
+    image: "/PhooRes/Building/PhoThamel.png",
     mapHref:
       "https://www.google.com/maps?ll=27.713582,85.310185&z=15&t=m&hl=en&gl=NP&mapclient=embed&cid=9799723082701011482",
     note: "A lively city-center retreat for travelers and Kathmandu locals.",
     number: "+977-970 909 0400",
   },
 ];
-
 const inputClass =
   "w-full border-0 border-b border-[#e1d5c8] bg-transparent px-0 py-4 text-sm text-[#2f2f31]! outline-none transition-colors placeholder:text-[#aaa198] focus:border-[#ec1c25]";
-
 type FormStatus = "idle" | "loading" | "success" | "error";
 
 const emptyForm = {
