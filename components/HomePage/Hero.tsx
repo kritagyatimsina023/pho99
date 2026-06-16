@@ -71,6 +71,7 @@ const Hero = () => {
           src={"/PhooRes/Building/whitelazimpat.png"}
           className="w-full h-full object-cover"
           fill
+          priority
           alt="hero-background"
         />
         <div className="absolute bg-black/20 z-20 inset-0" ></div>
@@ -88,6 +89,7 @@ const Hero = () => {
           src={"/PhooRes/Building/buildingInner.jpg"}
           className="w-full h-full object-cover"
           fill
+          priority
           alt="hero-reveal"
 
         />
@@ -104,6 +106,7 @@ const Hero = () => {
           src={"/PhooRes/Building/building-Three.png"}
           className="w-full h-full object-cover"
           fill
+          priority
           alt="hero-reveal"
 
         />

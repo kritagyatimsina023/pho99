@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import gsap from "gsap";
 
 const MIN_HOLD_MS = 650;
-const MAX_IMAGE_WAIT_MS = 4200;
+const MAX_IMAGE_WAIT_MS = 3000;
 
 function isModifiedClick(event: MouseEvent) {
   return event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0;
@@ -19,7 +19,6 @@ function delay(ms: number) {
 function getVisibleRouteImages() {
   const routeContent = document.getElementById("route-transition-content");
   if (!routeContent) return [];
-
   return Array.from(routeContent.querySelectorAll<HTMLImageElement>("img")).filter((image) => {
     if (image.dataset.transitionIgnore === "true") return false;
     const rect = image.getBoundingClientRect();
