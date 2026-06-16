@@ -148,13 +148,14 @@ const Chef = () => {
     <div ref={mainRef} className="h-[400vh] relative" >
       <section data-theme={"dark"} ref={sectionRef} className="h-screen w-full relative z-10 " >
         <div ref={overlayRef} className="absolute bg-black w-full h-full z-10" ></div>
-        <div className="h-full overflow-hidden " >
-          <Image
+        <div className="h-full overflow-hidden" >
+          {/* <Image
             ref={imageRef}
             alt="Banner-Two"
             fill
             src={'/PhooRes/Chef/team.webp'}
-            className="w-full h-full object-cover" />
+            className="w-full h-full object-cover" /> */}
+          <video className="h-full w-full object-cover" autoPlay playsInline muted loop src="/PhooRes/dishDisplay.mp4"></video>
         </div>
         <div ref={detailRef} className="bg-transparent absolute inset-0 flex flex-col justify-center items-center w-full z-10 mb-12" >
           <p ref={firstParaRef} className="text-center text-para-secondary text-2xl" >The Architect of Authentic Taste</p>

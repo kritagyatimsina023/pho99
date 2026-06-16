@@ -9,21 +9,15 @@ interface pageProps {
     heading: string
     subHeading?: string
 }
-
-
-
-
 const PageMainHero = ({ heroImg, heading, subHeading }: pageProps) => {
     const heroRef = useRef<HTMLElement | null>(null);
     const heroImageRef = useRef<HTMLImageElement | null>(null);
     const heroOverlayRef = useRef<HTMLDivElement | null>(null);
     const heroTitleRef = useRef<HTMLHeadingElement | null>(null);
     const heroSubRef = useRef<HTMLParagraphElement | null>(null);
-
-
     useGSAP(() => {
         if (heroRef.current && heroImageRef.current) {
-            gsap.fromTo(heroImageRef.current,
+            gsap.fromTo([heroImageRef.current, heroOverlayRef.current],
                 { yPercent: -10, scale: 1.15 },
                 {
                     yPercent: 10, ease: "none",
@@ -62,7 +56,7 @@ const PageMainHero = ({ heroImg, heading, subHeading }: pageProps) => {
                     src={heroImg}
                     priority
                 />
-                {/* <div ref={heroOverlayRef} className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" /> */}
+                <div ref={heroOverlayRef} className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
             </div>
             <div className="relative z-10 flex flex-col items-center justify-end h-full pb-24 px-6">
                 {/* <span className="text-xs font-semibold tracking-[0.3em] uppercase text-red-400 mb-4">Our Story</span> */}

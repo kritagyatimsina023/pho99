@@ -49,7 +49,6 @@ const NavBar = () => {
         setIsDarkTheme(false);
       }
     };
-
     const timer = setTimeout(checkInitialTheme, 50);
     return () => clearTimeout(timer);
   }, [pathName]);
@@ -134,12 +133,18 @@ const NavBar = () => {
         <div className="flex-1 flex justify-center pointer-events-auto">
           <button
             onClick={toggle}
-            className="flex items-end gap-[3px] h-5 cursor-pointer group p-2"
+            className="flex items-end gap-[3px] h-5 cursor-pointer group p-2 relative"
             aria-label="Toggle Sound"
           >
-            <div className={`w-[3px] ${iconColor} origin-bottom transition-all duration-300 ${isPlaying ? 'h-5 animate-[equalizer_1s_infinite_0ms]' : 'h-2'}`}></div>
-            <div className={`w-[3px] ${iconColor} origin-bottom transition-all duration-300 ${isPlaying ? 'h-5 animate-[equalizer_1.2s_infinite_200ms]' : 'h-4'}`}></div>
-            <div className={`w-[3px] ${iconColor} origin-bottom transition-all duration-300 ${isPlaying ? 'h-5 animate-[equalizer_0.8s_infinite_400ms]' : 'h-3'}`}></div>
+            <div className={`w-[3px] origin-bottom transition-all duration-300 ${isPlaying ? `h-5 ${iconColor}  animate-[equalizer_1s_infinite_0ms]` : 'h-3 bg-red-500!'}`}></div>
+            <div className={`w-[3px] origin-bottom transition-all duration-300 ${isPlaying ? `h-5 ${iconColor} animate-[equalizer_1.2s_infinite_200ms]` : 'h-4 bg-red-500!'}`}></div>
+            <div className={`w-[3px] origin-bottom transition-all duration-300 ${isPlaying ? `h-5 ${iconColor} animate-[equalizer_0.8s_infinite_400ms]` : 'h-5 bg-red-500!'}`}></div>
+
+            {!isPlaying && (
+              <span className="absolute top-[20%] flex items-center justify-center pointer-events-none">
+                <span className="block w-[18px] h-[2px] bg-red-500! rotate-[-45deg] rounded-full" />
+              </span>
+            )}
           </button>
         </div>
         {/* Right Side: Menu Button */}
@@ -149,9 +154,9 @@ const NavBar = () => {
             className="flex items-center bg-transparent! cursor-pointer gap-4 group hover:opacity-80 transition-opacity bg-none"
           >
             {/* <span className="hidden sm:block text-red-600! font-medium tracking-widest text-sm">MENU</span> */}
-            <div className="w-12 h-12 rounded-full  flex flex-col items-center  justify-center gap-[5px]">
-              <span className={`w-5 h-[2px] ${burgerColor} block transition-all duration-300 group-hover:-translate-y-[1px]`}></span>
-              <span className={`w-5 h-[2px] ${burgerColor} block transition-all duration-300 group-hover:translate-y-[1px]`}></span>
+            <div className="w-12 h-14 rounded-full  flex flex-col items-center  justify-center gap-[5px]">
+              <span className={`w-8 h-[2px] ${burgerColor} block transition-all duration-300 group-hover:-translate-y-[1px]`}></span>
+              <span className={`w-8 h-[2px] ${burgerColor} block transition-all duration-300 group-hover:translate-y-[1px]`}></span>
             </div>
           </button>
         </div>
@@ -169,15 +174,21 @@ const NavBar = () => {
             </Link>
           </div>
           {/* Equalizer inside overlay */}
-          <div className="flex-1 hidden md:flex justify-center">
+          <div className="flex-1 flex justify-center pointer-events-auto">
             <button
               onClick={toggle}
-              className="flex items-end gap-[3px] h-5 cursor-pointer group p-2"
+              className="flex items-end gap-[3px] h-5 cursor-pointer group p-2 relative"
               aria-label="Toggle Sound"
             >
-              <div className={`w-[3px] bg-white! origin-bottom transition-all duration-300 ${isPlaying ? 'h-5 animate-[equalizer_1s_infinite_0ms]' : 'h-2'}`}></div>
-              <div className={`w-[3px] bg-white! origin-bottom transition-all duration-300 ${isPlaying ? 'h-5 animate-[equalizer_1.2s_infinite_200ms]' : 'h-4'}`}></div>
-              <div className={`w-[3px] bg-white! origin-bottom transition-all duration-300 ${isPlaying ? 'h-5 animate-[equalizer_0.8s_infinite_400ms]' : 'h-3'}`}></div>
+              <div className={`w-[3px] origin-bottom transition-all duration-300 ${isPlaying ? `h-5 ${iconColor}  animate-[equalizer_1s_infinite_0ms]` : 'h-2 bg-red-500!'}`}></div>
+              <div className={`w-[3px] origin-bottom transition-all duration-300 ${isPlaying ? `h-5 ${iconColor} animate-[equalizer_1.2s_infinite_200ms]` : 'h-4 bg-red-500!'}`}></div>
+              <div className={`w-[3px] origin-bottom transition-all duration-300 ${isPlaying ? `h-5 ${iconColor} animate-[equalizer_0.8s_infinite_400ms]` : 'h-3 bg-red-500!'}`}></div>
+
+              {!isPlaying && (
+                <span className="absolute top-0 flex items-center justify-center pointer-events-none">
+                  <span className="block w-[18px] h-[2px] bg-red-500! rotate-[-45deg] rounded-full" />
+                </span>
+              )}
             </button>
           </div>
           {/* Close button */}
