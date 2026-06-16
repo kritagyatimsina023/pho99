@@ -68,9 +68,15 @@ export default function PageTransition({ children, debug = false }: PropsWithChi
   const [messageIndex, setMessageIndex] = useState(0);
   const [messageVisible, setMessageVisible] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+
+  useEffect(() => {
+    setIsInitialLoad(false);
+  }, []);
 
 
   const showTransition = useCallback(async () => {
+    if (isInitialLoad) return;
     const overlay = overlayRef.current;
     const logo = logoRef.current;
     const mark = markRef.current;
@@ -80,6 +86,9 @@ export default function PageTransition({ children, debug = false }: PropsWithChi
     setIsTransitioning(true);
     transitionStartedAt.current = performance.now();
     document.body.style.overflow = "hidden";
+
+
+    overlay.style.display = 'flex';
 
     gsap.killTweensOf([overlay, logo, mark, line]);
     gsap.set(overlay, { autoAlpha: 1, yPercent: 100 });
@@ -99,7 +108,7 @@ export default function PageTransition({ children, debug = false }: PropsWithChi
           setProgress(Math.round(this.progress() * 100));
         }
       }, "-=0.25");
-  }, []);
+  }, [isInitialLoad]);
 
   const hideTransition = useCallback(async () => {
     const overlay = overlayRef.current;
@@ -120,6 +129,9 @@ export default function PageTransition({ children, debug = false }: PropsWithChi
     setProgress(0);
 
     gsap.set(overlay, { autoAlpha: 0, yPercent: 100 });
+    setTimeout(() => {
+      if (overlay) overlay.style.display = 'none';
+    }, 100);
     document.body.style.overflow = "";
     setIsTransitioning(false);
     pendingHref.current = null;
@@ -132,7 +144,9 @@ export default function PageTransition({ children, debug = false }: PropsWithChi
       gsap.set(markRef.current, { rotate: 0, scale: 1 });
       gsap.set(lineRef.current, { scaleX: 1, transformOrigin: "left center" });
     } else {
+      if (overlayRef.current) overlayRef.current.style.display = 'none';
       gsap.set(overlayRef.current, { autoAlpha: 0, yPercent: 100 });
+      // gsap.set(overlayRef.current, { autoAlpha: 0, yPercent: 100 });
     }
   }, [debug]);
 
@@ -213,6 +227,9 @@ export default function PageTransition({ children, debug = false }: PropsWithChi
       </div>
       <div
         ref={overlayRef}
+        style={{
+          display: "none"
+        }}
         className="fixed inset-0 z-[999] flex items-center justify-center overflow-hidden bg-red-600 pointer-events-none"
         aria-live="polite"
         aria-label="Loading page"
