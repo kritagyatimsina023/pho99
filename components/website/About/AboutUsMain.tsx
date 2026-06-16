@@ -367,12 +367,15 @@ const AboutUsMain = () => {
         <div className="bg-white! relative z-10">
             <PageMainHero heroImg="/PhooRes/Building/ThamelPic.png" heading="About Pho99" subHeading="A taste of Home,Crafted with Love" />
             <section className="py-10 px-6 md:px-16 bg-white!">
+                <div className="text-center mb-14">
+                    <p className="text-md font-semibold tracking-[0.35em] uppercase text-red-500">
+                        Est. 2018
+                    </p>
+                </div>
                 <div ref={storyRef} className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     {/* Text side */}
                     <div className="flex flex-col gap-6">
-                        <span className="text-xs font-semibold tracking-[0.25em] uppercase text-red-500">
-                            Est. 2018
-                        </span>
+
                         <Heading
                             ref={storyHeadingRef}
                             className="text-5xl! md:text-6xl! px-0! leading-[1.05]"

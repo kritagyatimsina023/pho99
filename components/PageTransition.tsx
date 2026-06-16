@@ -229,7 +229,7 @@ export default function PageTransition({ children, debug = false }: PropsWithChi
         style={{
           display: "none"
         }}
-        className="fixed inset-0 z-[999] flex items-center justify-center overflow-hidden bg-red-600 pointer-events-none"
+        className="fixed inset-0 z-[999] flex items-center justify-center overflow-hidden bg-primary pointer-events-none"
         aria-live="polite"
         aria-label="Loading page"
       >

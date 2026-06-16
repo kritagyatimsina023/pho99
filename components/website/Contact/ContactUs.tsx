@@ -184,11 +184,13 @@ const ContactUs = () => {
       />
       <Layout className="max-w-8xl!">
         <section className="px-6 py-10 md:px-16">
+          <div className="text-center mb-14">
+            <p className="text-md font-semibold tracking-[0.35em] uppercase text-red-500">
+              Send A Message
+            </p>
+          </div>
           <div className="mx-auto grid gap-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
             <div className="lg:sticky lg:top-24">
-              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-red-500!">
-                Send A Message
-              </span>
               <Heading className="mt-4 text-5xl! leading-[1.05] md:text-6xl!">
                 We&apos;d Love To Hear From You
               </Heading>
