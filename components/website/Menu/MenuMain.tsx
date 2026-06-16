@@ -34,10 +34,6 @@ const MENU_ITEMS = [
     { name: "Hoi An Chicken", category: "dish" as const, src: "/PhooRes/Pho99Dish/HOI AN CHICKEN (1) (1).jpg" },
 
 
-
-
-
-
     { name: "Lemon Iced Tea", category: "drink" as const, src: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=800&q=75" },
     { name: "Vietnamese Coffee", category: "drink" as const, src: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&q=75" },
     { name: "Fresh Lime Soda", category: "drink" as const, src: "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=800&q=75" },
@@ -253,72 +249,9 @@ const MenuMain = () => {
 
     return (
         <main className="bg-white">
-            {/* <section ref={heroRef} className="relative h-[85vh] w-full overflow-hidden">
-                <Image
-                    ref={heroImageRef}
-                    src="/PhooRes/HeroSlider/PhoFood-1.avif"
-                    alt="Pho99 signature Vietnamese food"
-                    fill
-                    priority
-                    className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/20" />
-                <div className="relative z-10 flex h-full flex-col items-center justify-end px-6 pb-24 text-center">
-                    <span className="mb-4 text-xs font-semibold tracking-[0.3em] uppercase text-red-400">
-                        Pho99 Menu
-                    </span>
-                    <Heading
-                        ref={heroTitleRef}
-                        className="heading-secondary text-7xl! leading-[0.95] md:text-8xl!"
-                    >
-                        Taste The Journey
-                    </Heading>
-                    <p className="mt-6 max-w-xl text-base leading-relaxed text-white! opacity-85">
-                        Open the menu and explore Vietnamese comfort, fresh drinks, and sweet finishes across our Kathmandu locations.
-                    </p>
-                </div>
-            </section> */}
+
             <PageMainHero heading="Taste The Journey" heroImg="/PhooRes/Pho99Dish/darkGreen.png" subHeading="    Open the menu and explore Vietnamese comfort, fresh drinks, and sweet finishes across our Kathmandu locations." />
-            {/* <section className="bg-white px-4 py-28 md:px-12">
-                <div className="mx-auto max-w-7xl">
-                    <div className="mb-14 max-w-2xl">
-                        <span className="text-xs font-semibold tracking-[0.25em] uppercase text-red-500">
-                            Full Menu
-                        </span>
-                        <Heading className="mt-4 text-5xl! leading-[1.04] md:text-6xl!">
-                            Menu Pages
-                        </Heading>
-                        <p className="mt-6 text-base leading-relaxed text-para-secondary">
-                            Browse all ten Pho99 menu pages in a side-by-side spread.
-                        </p>
-                    </div>
-                    <div className="overflow-hidden rounded-[1.5rem]   p-2  md:p-4">
-                        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
-                            {menuPages.map((page, index) => (
-                                <div
-                                    key={page.src}
-                                    ref={(el) => { menuPageRefs.current[index] = el; }}
-                                    className={`relative aspect-[4/5] overflow-hidden bg-white ${index % 2 === 0 ? "md:border-r md:border-[#d8d0c4]" : ""}`}
-                                >
-                                    <div
-                                        ref={(el) => { menuImageRefs.current[index] = el; }}
-                                        className="absolute inset-4 md:inset-6"
-                                    >
-                                        <Image
-                                            src={page.src}
-                                            alt={page.alt}
-                                            fill
-                                            sizes="(max-width: 768px) 100vw, 40vw"
-                                            className="object-contain"
-                                        />
-                                    </div>
-                                    <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section> */}
+
             <MenuPageTabs menuPageRefs={menuPageRefs} menuImageRefs={menuImageRefs} menuPages={menuPages} />
             <section className="bg-white relative z-30x px-4 py-24 md:px-12">
                 <Layout>

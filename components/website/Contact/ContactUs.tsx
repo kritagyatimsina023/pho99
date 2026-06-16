@@ -183,7 +183,7 @@ const ContactUs = () => {
         subHeading=" Reach out for reservations, private gatherings, delivery questions, or anything you would like to ask before visiting Pho99."
       />
       <Layout className="max-w-8xl!">
-        <section className="px-6 py-24 md:px-16">
+        <section className="px-6 py-10 md:px-16">
           <div className="mx-auto grid gap-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
             <div className="lg:sticky lg:top-24">
               <span className="text-xs font-semibold uppercase tracking-[0.25em] text-red-500!">

@@ -62,7 +62,6 @@ const Hero = () => {
       opacity: 0
     }, "<+=0.6")
   }, [])
-
   return (
     <div ref={mainRef} data-theme={"dark"} className="min-h-screen w-full relative overflow-hidden">
       <div className="absolute z-10 inset-0">

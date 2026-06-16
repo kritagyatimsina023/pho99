@@ -365,8 +365,8 @@ const AboutUsMain = () => {
 
     return (
         <div className="bg-white! relative z-10">
-            <PageMainHero heroImg="/PhooRes/Building/aboutmainhero.png" heading="About Pho99" subHeading="A taste of Home,Crafted with Love" />
-            <section className="py-28 px-6 md:px-16 bg-white!">
+            <PageMainHero heroImg="/PhooRes/Building/ThamelPic.png" heading="About Pho99" subHeading="A taste of Home,Crafted with Love" />
+            <section className="py-10 px-6 md:px-16 bg-white!">
                 <div ref={storyRef} className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     {/* Text side */}
                     <div className="flex flex-col gap-6">

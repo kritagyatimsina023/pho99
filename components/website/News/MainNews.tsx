@@ -69,10 +69,10 @@ News & media"
                 subHeading="Stories, updates & moments from Pho99"
             />
             {/* ── Main news section ── */}
-            <section className="py-24 px-6 md:px-16 bg-white">
+            <section className="py-10 px-6 md:px-16 bg-white">
                 {/* Section label */}
                 <div className="text-center mb-14">
-                    <p className="text-xs font-semibold tracking-[0.35em] uppercase text-red-500">
+                    <p className="text-md font-semibold tracking-[0.35em] uppercase text-red-500">
                         — Stay With Us For Updates —
                     </p>
                 </div>

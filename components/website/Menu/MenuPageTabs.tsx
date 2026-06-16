@@ -205,7 +205,7 @@ export const MenuPageTabs = ({ menuPages }: MenuPageTabsProps) => {
         <Layout>
             <div ref={panelRef}>
                 {activeTab !== "order" && (
-                    <section className="relative overflow-hidden rounded-[32px] bg-white! px-4 py-8 sm:px-6 md:px-8 md:py-10">
+                    <section className="relative overflow-hidden rounded-[32px] bg-white! px-4 py-10 sm:px-6 md:px-8 md:py-10">
                         <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white/75 to-transparent" />
                         {/* ── Title (centred) ── */}
                         <div className="relative z-10 mb-6 flex flex-col items-center text-center gap-2">
