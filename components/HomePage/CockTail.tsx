@@ -133,13 +133,11 @@ const CockTail = () => {
       ease: "power1.inOut",
       duration: 1
     })
-
-
   }, [])
   return (
-    <section className="min-h-screen relative w-full overflow-hidden">
+    <section className="min-h-screen  w-full overflow-hidden">
       <div className="relative z-20">
-        <div className="flex flex-col items-center py-30">
+        <div className="flex flex-col items-center py-20">
           <div ref={contentWrapper} className="flex flex-col items-center px-4 md:px-8" >
             <div>
               <Heading ref={headingRef} className="text-center md:text-7xl! opacity-0.45">

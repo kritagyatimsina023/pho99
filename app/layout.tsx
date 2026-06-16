@@ -6,6 +6,7 @@ import NavBar from "@/components/NavBar";
 import DoorFooter from "@/layout/DoorFooter";
 import { SoundProvider } from "@/provider/SoundProvider";
 import Preloader from "@/components/Preloader";
+import PageTransition from "@/components/PageTransition";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,9 +43,11 @@ export default function RootLayout({
           <Preloader />
           <div id="main-wrapper" className="flex-1 flex flex-col min-h-full bg-background">
             <LenisProvider>
-              <NavBar />
-              {children}
-              <DoorFooter />
+              <PageTransition>
+                <NavBar />
+                {children}
+                <DoorFooter />
+              </PageTransition>
             </LenisProvider>
           </div>
         </SoundProvider>

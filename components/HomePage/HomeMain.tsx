@@ -22,8 +22,9 @@ const HomeMain = () => {
         <CockTail />
         <Chef />
         <Reservation />
+
       </div>
-    </div>
+    </div >
   );
 };
 

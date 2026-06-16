@@ -1,23 +1,23 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import { useSound } from '@/provider/SoundProvider';
-import { Volume2, VolumeX } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import Button from './Button';
 import Heading from './Heading';
 
 const Preloader = () => {
-  const { hasInteracted, setHasInteracted, play } = useSound();
-  const [isVisible, setIsVisible] = useState(true);
+  const { setHasInteracted, play } = useSound();
+  const [hasDismissed, setHasDismissed] = useState(false);
   const btn1Ref = useRef(null)
   const btn2Ref = useRef(null)
-
-  // Render preloader on every initial load
-  useEffect(() => {
-    if (hasInteracted && !isVisible) return;
-  }, [hasInteracted, isVisible]);
+  const isInitialHomePage = useSyncExternalStore(
+    () => () => undefined,
+    () => window.location.pathname === '/',
+    () => false
+  );
+  const isVisible = isInitialHomePage && !hasDismissed;
 
   useGSAP(() => {
     if (!isVisible) return;
@@ -48,7 +48,7 @@ const Preloader = () => {
     const tl = gsap.timeline({
       onComplete: () => {
         setHasInteracted(true);
-        setIsVisible(false);
+        setHasDismissed(true);
         gsap.set('#main-wrapper', { clearProps: 'clipPath' });
       }
     });

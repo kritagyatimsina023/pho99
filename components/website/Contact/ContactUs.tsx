@@ -313,7 +313,6 @@ const ContactUs = () => {
                 </p>
               )}
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                {/* Success feedback */}
                 {status === "success" ? (
                   <div className="flex items-center gap-3 rounded-[8px] bg-green-50 border border-green-200 px-5 py-3 w-full">
                     <CheckCircle2

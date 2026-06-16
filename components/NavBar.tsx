@@ -136,13 +136,13 @@ const NavBar = () => {
             className="flex items-end gap-[3px] h-5 cursor-pointer group p-2 relative"
             aria-label="Toggle Sound"
           >
-            <div className={`w-[3px] origin-bottom transition-all duration-300 ${isPlaying ? `h-5 ${iconColor}  animate-[equalizer_1s_infinite_0ms]` : 'h-3 bg-red-500!'}`}></div>
-            <div className={`w-[3px] origin-bottom transition-all duration-300 ${isPlaying ? `h-5 ${iconColor} animate-[equalizer_1.2s_infinite_200ms]` : 'h-4 bg-red-500!'}`}></div>
-            <div className={`w-[3px] origin-bottom transition-all duration-300 ${isPlaying ? `h-5 ${iconColor} animate-[equalizer_0.8s_infinite_400ms]` : 'h-5 bg-red-500!'}`}></div>
+            <div className={`w-[3px] origin-bottom transition-all duration-300 ${isPlaying ? `h-5 ${iconColor}  animate-[equalizer_1s_infinite_0ms]` : 'h-3 bg-red-500'}`}></div>
+            <div className={`w-[3px] origin-bottom transition-all duration-300 ${isPlaying ? `h-5 ${iconColor} animate-[equalizer_1.2s_infinite_200ms]` : 'h-4 bg-red-500'}`}></div>
+            <div className={`w-[3px] origin-bottom transition-all duration-300 ${isPlaying ? `h-5 ${iconColor} animate-[equalizer_0.8s_infinite_400ms]` : 'h-5 bg-red-500'}`}></div>
 
             {!isPlaying && (
-              <span className="absolute top-[20%] flex items-center justify-center pointer-events-none">
-                <span className="block w-[18px] h-[2px] bg-red-500! rotate-[-45deg] rounded-full" />
+              <span className="absolute top-[10%] right-[5%] flex items-center justify-center pointer-events-none">
+                <span className="block w-[28px] h-[2px] bg-red-500! rotate-[-45deg] rounded-full" />
               </span>
             )}
           </button>
@@ -180,9 +180,9 @@ const NavBar = () => {
               className="flex items-end gap-[3px] h-5 cursor-pointer group p-2 relative"
               aria-label="Toggle Sound"
             >
-              <div className={`w-[3px] origin-bottom transition-all duration-300 ${isPlaying ? `h-5 ${iconColor}  animate-[equalizer_1s_infinite_0ms]` : 'h-2 bg-red-500!'}`}></div>
-              <div className={`w-[3px] origin-bottom transition-all duration-300 ${isPlaying ? `h-5 ${iconColor} animate-[equalizer_1.2s_infinite_200ms]` : 'h-4 bg-red-500!'}`}></div>
-              <div className={`w-[3px] origin-bottom transition-all duration-300 ${isPlaying ? `h-5 ${iconColor} animate-[equalizer_0.8s_infinite_400ms]` : 'h-3 bg-red-500!'}`}></div>
+              <div className={`w-[3px] origin-bottom transition-all duration-300 ${isPlaying ? `h-5 ${iconColor}  animate-[equalizer_1s_infinite_0ms]` : 'h-2 bg-white!'}`}></div>
+              <div className={`w-[3px] origin-bottom transition-all duration-300 ${isPlaying ? `h-5 ${iconColor} animate-[equalizer_1.2s_infinite_200ms]` : 'h-4 bg-white!'}`}></div>
+              <div className={`w-[3px] origin-bottom transition-all duration-300 ${isPlaying ? `h-5 ${iconColor} animate-[equalizer_0.8s_infinite_400ms]` : 'h-3 bg-white!'}`}></div>
 
               {!isPlaying && (
                 <span className="absolute top-0 flex items-center justify-center pointer-events-none">
