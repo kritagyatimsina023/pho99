@@ -1,0 +1,72 @@
+name: Pho99 Frontend CI/CD (VPS)
+
+on:
+  push:
+    branches: ["master", "main"]
+
+concurrency:
+  group: Pho99-frontend
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }} # aditya
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script_stop: true
+          script: |
+            set -euo pipefail
+
+            echo "✅ SSH connection successful!"
+            echo "👤 User: $(whoami)"
+
+            APP_DIR="/var/www/Pho99_Frontend"
+            BRANCH="${{ github.ref_name }}"
+
+            cd "$APP_DIR"
+            echo "📦 Deploying branch: $BRANCH"
+
+            git fetch origin "$BRANCH"
+            git reset --hard "origin/$BRANCH"
+
+            # Ensure pnpm path for non-interactive ssh
+            export NPM_CONFIG_PREFIX="$HOME/.npm-global"
+            export PATH="$HOME/.npm-global/bin:$PATH"
+
+            echo "🧰 Node: $(node -v)"
+            echo "🧰 npm: $(npm -v)"
+
+            # Install pnpm if missing
+            if ! command -v pnpm >/dev/null 2>&1; then
+              echo "📦 pnpm not found, installing..."
+              npm i -g pnpm@10.15.0
+            fi
+            echo "🧰 pnpm: $(pnpm -v)"
+
+            echo "📥 Installing dependencies..."
+            pnpm install --no-frozen-lockfile
+
+            echo "🛠 Building..."
+            pnpm build
+
+            # Ensure pm2 exists
+            if ! command -v pm2 >/dev/null 2>&1; then
+              echo "📦 pm2 not found, installing..."
+              npm i -g pm2
+            fi
+
+            echo "🔄 Restarting PM2..."
+            if pm2 describe "pho-99" >/dev/null 2>&1; then
+              pm2 restart "kan-cosmetics" --time
+            else
+              pm2 start pnpm --name "pho-99" --time --cwd "$APP_DIR" -- start
+            fi
+
+            pm2 save
+            echo "✅ Deploy complete!"
