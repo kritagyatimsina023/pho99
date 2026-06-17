@@ -249,9 +249,7 @@ const MenuMain = () => {
 
     return (
         <main className="bg-white">
-
             <PageMainHero heading="Taste The Journey" heroImg="/PhooRes/Pho99Dish/darkGreen.png" subHeading="    Open the menu and explore Vietnamese comfort, fresh drinks, and sweet finishes across our Kathmandu locations." />
-
             <MenuPageTabs menuPageRefs={menuPageRefs} menuImageRefs={menuImageRefs} menuPages={menuPages} />
             <section className="bg-white relative z-30x px-4 py-24 md:px-12">
                 <Layout>

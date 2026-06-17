@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Hero from "./Hero";
 import CockTail from "./CockTail";
 import Chef from "./Chef";
@@ -6,7 +6,6 @@ import Reservation from "./Reservation";
 import HomeAbout from "./HomeAbout";
 import HomeBanner from "./HomeBanner";
 import LocationInfo from "./LocationInfo";
-
 
 const HomeMain = () => {
   return (
@@ -22,9 +21,8 @@ const HomeMain = () => {
         <CockTail />
         <Chef />
         <Reservation />
-
       </div>
-    </div >
+    </div>
   );
 };
 

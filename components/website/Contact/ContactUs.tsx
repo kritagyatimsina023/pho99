@@ -2,7 +2,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, FormEvent } from "react";
-import emailjs from "@emailjs/browser";
 import {
   CheckCircle2,
   Clock,
